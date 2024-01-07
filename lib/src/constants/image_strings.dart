@@ -1,0 +1,15 @@
+/* -- APP IMAGE STRINGS -- */
+
+// -- splash screen images
+const String rSplashTopIcon = "assets/icons/brands/ecommerce.jpg";
+const String rSplashImage = "assets/logos/splash.gif";
+const String rSplashImage1 = "assets/logos/dmanulogo.png";
+const String rSplashIcon = "assets/icons/dmanu_icon.png";
+
+// -- onboarding screen images
+const String rOnboardingImg1 =
+    "assets/images/on_boarding_images/onboarding_img_1.gif";
+const String rOnboardingImg2 =
+    "assets/images/on_boarding_images/onboarding_img_2.gif";
+const String rOnboardingImg3 =
+    "assets/images/on_boarding_images/onboarding_img_3.gif";
