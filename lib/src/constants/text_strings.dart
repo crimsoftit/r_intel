@@ -11,7 +11,8 @@ const String rOnbaordingTitle3 = "Get code & resources";
 
 const String rOnbaordingSubTitle1 =
     "Begin your journey with us on this easy & amazing platform";
-const String rOnbaordingSubTitle2 = "get video tutorials of each topic";
+const String rOnbaordingSubTitle2 =
+    "get timely and accurate reports regarding your sales";
 const String rOnbaordingSubTitle3 = "Save time and money using our app";
 
 const String rOnbaordingCounter1 = "1/3";
