@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 /* -- LIST OF ALL COLORS --*/
 const rPrimaryColor = Color(0xffffe400);
+var rPrimaryBrown = Colors.brown[100];
 const rSecondaryColor = Color(0xff272727);
 const rAccentColor = Color(0xff001bff);
 

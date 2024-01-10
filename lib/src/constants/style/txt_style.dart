@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:r_intel/src/constants/colors.dart';
 
 class PrimaryText extends StatelessWidget {
   final double size;
@@ -15,7 +16,7 @@ class PrimaryText extends StatelessWidget {
     required this.text,
     this.fontWeight = FontWeight.w400,
     this.fontStyle = FontStyle.italic,
-    this.color = Colors.brown,
+    this.color = rSecondaryColor,
     this.size = 20,
     this.height = 1.3,
     this.txtAlign = TextAlign.center,
