@@ -5,6 +5,7 @@ import 'package:r_intel/src/constants/image_strings.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
 import 'package:r_intel/src/features/authentication/models/onboarding_model.dart';
 import 'package:r_intel/src/features/authentication/screens/onboarding/onboarding_page_widget.dart';
+import 'package:r_intel/src/features/authentication/screens/welcome_screen/welcome_screen.dart';
 
 class OnboardingController extends GetxController {
   final liquidController = LiquidController();
@@ -48,7 +49,8 @@ class OnboardingController extends GetxController {
     currentPage.value = activePageIndex;
   }
 
-  skip() => liquidController.jumpToPage(page: 2);
+  //skip() => liquidController.jumpToPage(page: 2);
+  skip() => Get.to(const WelcomeScreen());
   animateToNextSlide() {
     int nextPage = liquidController.currentPage + 1;
     liquidController.animateToPage(page: nextPage);

@@ -13,8 +13,14 @@ const String rOnbaordingSubTitle1 =
     "Begin your journey with us on this easy & amazing platform";
 const String rOnbaordingSubTitle2 =
     "get timely and accurate reports regarding your sales";
-const String rOnbaordingSubTitle3 = "Save time and money using our app";
+const String rOnbaordingSubTitle3 =
+    "Save time and money using our app for retail management";
 
 const String rOnbaordingCounter1 = "1/3";
 const String rOnbaordingCounter2 = "2/3";
 const String rOnbaordingCounter3 = "3/3";
+
+// -- welcome screen text formats
+const String rWelcomeTitle = "Retail re-defined...";
+const String rWelcomeSubTitle =
+    "Let's bring transparency, accountability, top-notch efficiency and integrity to your retail business";

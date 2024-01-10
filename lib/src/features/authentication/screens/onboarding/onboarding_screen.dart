@@ -9,7 +9,7 @@ import 'package:r_intel/src/features/authentication/controllers/onboarding_contr
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  OnboardingScreen({super.key});
+  const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +36,10 @@ class OnboardingScreen extends StatelessWidget {
                   color: Colors.brown,
                 ),
                 shape: const CircleBorder(),
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(10),
               ),
               child: Container(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10.0),
                 decoration: const BoxDecoration(
                   color: rDarkColor,
                   shape: BoxShape.circle,
@@ -50,7 +50,7 @@ class OnboardingScreen extends StatelessWidget {
           ),
           Positioned(
             top: 50,
-            right: 20,
+            left: 20,
             child: TextButton(
               onPressed: () => oBcontroller.skip(),
               child: const PrimaryText(

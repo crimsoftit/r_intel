@@ -13,3 +13,7 @@ const String rOnboardingImg2 =
     "assets/images/on_boarding_images/onboarding_img_2.gif";
 const String rOnboardingImg3 =
     "assets/images/on_boarding_images/onboarding_img_3.gif";
+
+// -- welcome screen images
+const String rWelcomeScreenImg1 =
+    "assets/images/welcome_screen_images/login_3.jpg";

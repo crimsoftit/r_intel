@@ -94,6 +94,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/on_boarding_images/
+    - assets/images/welcome_screen_images/
 
 
     - assets/images/content/user.png
