@@ -93,8 +93,10 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/logos/
     - assets/images/on_boarding_images/
     - assets/images/welcome_screen_images/
+    - assets/images/login/
 
 
     - assets/images/content/user.png

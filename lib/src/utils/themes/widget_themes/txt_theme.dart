@@ -13,6 +13,11 @@ class TxtTheme {
       fontSize: 16,
       color: Colors.brown,
     ),
+    bodySmall: TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 10,
+      color: Colors.grey,
+    ),
     // titleSmall: GoogleFonts.poppins(
     //   color: Colors.white60,
     //   fontSize: 24,

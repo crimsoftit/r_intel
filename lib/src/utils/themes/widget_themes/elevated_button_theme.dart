@@ -9,12 +9,14 @@ class RElevatedButtonTheme {
   static final elevatedBtnLightTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      shape: const RoundedRectangleBorder(),
       foregroundColor: rWhiteColor,
       backgroundColor: rSecondaryColor,
-      side: const BorderSide(color: rSecondaryColor),
+      side: const BorderSide(color: Colors.brown),
       padding: const EdgeInsets.symmetric(
         vertical: rButtonHeight * 0.5,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
       ),
     ),
   );
@@ -23,12 +25,14 @@ class RElevatedButtonTheme {
   static final elevatedBtnDarkTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      shape: const RoundedRectangleBorder(),
       foregroundColor: rSecondaryColor,
       backgroundColor: rWhiteColor,
       side: const BorderSide(color: rWhiteColor),
       padding: const EdgeInsets.symmetric(
         vertical: rButtonHeight * 0.5,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
       ),
     ),
   );

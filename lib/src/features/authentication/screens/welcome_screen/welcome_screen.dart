@@ -8,6 +8,7 @@ import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
 import 'package:r_intel/src/features/authentication/models/fade_in_animation_model.dart';
+import 'package:r_intel/src/features/authentication/screens/login/login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -28,7 +29,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final isDarkMode = brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDarkMode ? rSecondaryColor : rPrimaryColor,
+      backgroundColor: isDarkMode ? rSecondaryColor : Colors.orange,
       body: Stack(
         children: [
           RFadeInAnimation(
@@ -59,7 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                       PrimaryText(
                         text: rWelcomeTitle,
-                        size: 16,
+                        size: 13,
                         fontWeight: FontWeight.w400,
                       ),
                       SizedBox(
@@ -67,7 +68,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                       PrimaryText(
                         text: rWelcomeSubTitle,
-                        size: 13,
+                        size: 11,
                       ),
                     ],
                   ),
@@ -75,7 +76,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     children: [
                       Expanded(
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(const LoginScreen());
+                          },
                           child: Text(
                             'Login'.toUpperCase(),
                           ),

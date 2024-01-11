@@ -21,6 +21,15 @@ const String rOnbaordingCounter2 = "2/3";
 const String rOnbaordingCounter3 = "3/3";
 
 // -- welcome screen text formats
-const String rWelcomeTitle = "Retail re-defined...";
+const String rWelcomeTitle = "Retail re-defined";
 const String rWelcomeSubTitle =
     "Let's bring transparency, accountability, top-notch efficiency and integrity to your retail business";
+
+// --login screen text
+const String rLoginTitle = "Welcome back.";
+const String rLoginSubTitle = "Make it work, make it right, make it fast.";
+const String rRememberMe = "Remember me?";
+const String rGoogleSignin = "Sign in with Google.";
+const String rNoAccount = "Don't have an account? ";
+
+const String rSignUp = 'Sign up';

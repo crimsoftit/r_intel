@@ -17,7 +17,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     textTheme: TxtTheme.darkTextTheme,
-    outlinedButtonTheme: ROutlinedButtonTheme.outlinedBtnLightTheme,
+    outlinedButtonTheme: ROutlinedButtonTheme.outlinedBtnDarkTheme,
     elevatedButtonTheme: RElevatedButtonTheme.elevatedBtnDarkTheme,
   );
 }

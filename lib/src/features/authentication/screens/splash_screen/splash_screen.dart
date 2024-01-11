@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:r_intel/src/common_widgets/fade_in_animation/animation_design.dart';
 import 'package:r_intel/src/constants/image_strings.dart';
 import 'package:r_intel/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';

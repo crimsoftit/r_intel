@@ -8,11 +8,13 @@ class ROutlinedButtonTheme {
   /* -- light mode (theme) -- */
   static final outlinedBtnLightTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      shape: const RoundedRectangleBorder(),
       foregroundColor: rSecondaryColor,
-      side: const BorderSide(color: rSecondaryColor),
+      side: const BorderSide(color: Colors.brown),
       padding: const EdgeInsets.symmetric(
         vertical: rButtonHeight * 0.5,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
       ),
     ),
   );
@@ -20,11 +22,13 @@ class ROutlinedButtonTheme {
   /* -- dark mode (theme)) -- */
   static final outlinedBtnDarkTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      shape: const RoundedRectangleBorder(),
       foregroundColor: rWhiteColor,
-      side: const BorderSide(color: rWhiteColor),
+      side: const BorderSide(color: Colors.white),
       padding: const EdgeInsets.symmetric(
         vertical: rButtonHeight * 0.5,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
       ),
     ),
   );

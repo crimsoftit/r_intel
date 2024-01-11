@@ -17,3 +17,7 @@ const String rOnboardingImg3 =
 // -- welcome screen images
 const String rWelcomeScreenImg1 =
     "assets/images/welcome_screen_images/login_3.jpg";
+
+// -- login image
+const String rLoginImg = "assets/images/login/login.png";
+const String rGoogleLogo = "assets/logos/google.png";
