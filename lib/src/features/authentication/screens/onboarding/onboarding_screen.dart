@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:r_intel/src/constants/colors.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
@@ -18,7 +19,7 @@ class OnboardingScreen extends StatelessWidget {
         children: [
           LiquidSwipe(
             pages: oBcontroller.pages,
-            liquidController: oBcontroller.liquidController,
+            liquidController: oBcontroller.controller,
             onPageChangeCallback: oBcontroller.onPageChangedCallBack,
             slideIconWidget: const Icon(Icons.arrow_back_ios),
             enableSideReveal: true,
@@ -57,14 +58,17 @@ class OnboardingScreen extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            bottom: 30,
-            child: AnimatedSmoothIndicator(
-              count: 3,
-              activeIndex: oBcontroller.currentPage.value,
-              effect: const WormEffect(
-                activeDotColor: Colors.brown,
-                dotHeight: 5.0,
+          Obx(
+            () => Positioned(
+              bottom: 30,
+              child: AnimatedSmoothIndicator(
+                count: 3,
+                activeIndex: oBcontroller.currentPage.value,
+                effect: const WormEffect(
+                  //activeDotColor: rPrimaryColor,
+                  activeDotColor: Colors.brown,
+                  dotHeight: 5.0,
+                ),
               ),
             ),
           ),
