@@ -28,7 +28,7 @@ class PrimaryText extends StatelessWidget {
       text,
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: context.isDarkMode ? Colors.white : color,
+        color: context.isDarkMode ? Colors.white : rSecondaryColor,
         height: height,
         fontFamily: 'Poppins',
         fontSize: size,

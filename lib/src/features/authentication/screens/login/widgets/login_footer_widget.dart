@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:r_intel/src/constants/image_strings.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
+import 'package:r_intel/src/features/authentication/screens/signup/signup_screen.dart';
 
 class LoginFooterWidget extends StatelessWidget {
   const LoginFooterWidget({
@@ -16,7 +18,7 @@ class LoginFooterWidget extends StatelessWidget {
       children: [
         const PrimaryText(
           text: 'OR',
-          size: 12,
+          size: 10,
         ),
         SizedBox(
           width: double.infinity,
@@ -26,17 +28,19 @@ class LoginFooterWidget extends StatelessWidget {
               width: 20.0,
             ),
             onPressed: () {},
-            label: const PrimaryText(
-              text: rGoogleSignin,
-              size: 12,
+            label: PrimaryText(
+              text: rGoogleSignin.toUpperCase(),
+              size: 10,
             ),
           ),
         ),
         const SizedBox(
-          height: tFormHeight - 20,
+          height: rFormHeight - 20,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(SignUpScreen());
+          },
           child: Text.rich(
             TextSpan(
               text: rNoAccount,
@@ -45,8 +49,10 @@ class LoginFooterWidget extends StatelessWidget {
                 TextSpan(
                   text: rSignUp,
                   style: TextStyle(
-                    color: Colors.blue,
                     fontFamily: 'Poppins',
+                    fontSize: 10,
+                    color: Colors.blue,
+                    fontStyle: FontStyle.italic,
                   ),
                 ),
               ],

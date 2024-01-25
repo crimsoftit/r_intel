@@ -1,48 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:r_intel/src/constants/style/textfield_style.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({
+  LoginForm({
     super.key,
   });
+
+  final TextEditingController _txtEmail = TextEditingController();
+  final TextEditingController _txtPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Form(
       child: Container(
         padding: const EdgeInsets.symmetric(
-          vertical: 20.0,
+          vertical: 10.0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextFormField(
-              style: const TextStyle(
-                fontSize: 10,
-                height: 0.8,
-                fontFamily: 'Poppins',
-              ),
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.person_outline_outlined),
-                labelText: 'Email',
+            RTextfield(
+              txtController: _txtEmail,
+              inputDecoration: const InputDecoration(
+                label: Text('Email'),
                 hintText: 'Email',
-                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.person_outline_outlined),
               ),
             ),
+
             const SizedBox(
               height: 20,
             ),
-            TextFormField(
-              style: const TextStyle(
-                fontSize: 10,
-                height: 0.8,
-                fontFamily: 'Poppins',
-              ),
-              decoration: const InputDecoration(
+            RTextfield(
+              txtController: _txtPassword,
+              inputDecoration: const InputDecoration(
                 prefixIcon: Icon(Icons.fingerprint),
                 labelText: 'Password',
                 hintText: 'Password',
-                border: OutlineInputBorder(),
                 suffixIcon: IconButton(
                   onPressed: null,
                   icon: Icon(Icons.remove_red_eye_sharp),
@@ -70,8 +65,10 @@ class LoginForm extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   'Login'.toUpperCase(),
-                  //color: Colors.white,
-                  //size: 12,
+                  style: const TextStyle(
+                    fontSize: 10,
+                    fontFamily: 'Poppins',
+                  ),
                 ),
               ),
             ),

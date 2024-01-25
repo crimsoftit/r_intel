@@ -18,6 +18,13 @@ class TxtTheme {
       fontSize: 10,
       color: Colors.grey,
     ),
+
+    labelSmall: TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 10,
+      fontStyle: FontStyle.italic,
+      color: Colors.blue,
+    ),
     // titleSmall: GoogleFonts.poppins(
     //   color: Colors.white60,
     //   fontSize: 24,
@@ -33,6 +40,17 @@ class TxtTheme {
       fontFamily: 'Poppins',
       fontSize: 16,
       color: Colors.white,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 10,
+      color: Colors.white,
+    ),
+    labelSmall: TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 10,
+      fontStyle: FontStyle.italic,
+      color: Colors.blue,
     ),
   );
 }

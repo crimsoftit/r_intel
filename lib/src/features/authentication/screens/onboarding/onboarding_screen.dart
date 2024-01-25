@@ -1,7 +1,4 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:r_intel/src/constants/colors.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
@@ -60,16 +57,14 @@ class OnboardingScreen extends StatelessWidget {
               ),
             ),
           ),
-          Obx(
-            () => Positioned(
-              bottom: 30,
-              child: AnimatedSmoothIndicator(
-                count: 3,
-                activeIndex: oBcontroller.currentPage.value,
-                effect: const WormEffect(
-                  activeDotColor: Colors.brown,
-                  dotHeight: 5.0,
-                ),
+          Positioned(
+            bottom: 30,
+            child: AnimatedSmoothIndicator(
+              count: 3,
+              activeIndex: oBcontroller.currentPage.value,
+              effect: const WormEffect(
+                activeDotColor: Colors.brown,
+                dotHeight: 5.0,
               ),
             ),
           ),

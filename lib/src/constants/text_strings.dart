@@ -25,11 +25,17 @@ const String rWelcomeTitle = "Retail re-defined";
 const String rWelcomeSubTitle =
     "Let's bring transparency, accountability, top-notch efficiency and integrity to your retail business";
 
-// --login screen text
+// -- login screen text
+const String rLogin = "Login";
 const String rLoginTitle = "Welcome back.";
 const String rLoginSubTitle = "Make it work, make it right, make it fast.";
 const String rRememberMe = "Remember me?";
 const String rGoogleSignin = "Sign in with Google.";
 const String rNoAccount = "Don't have an account? ";
 
+// -- signup screen text
 const String rSignUp = 'Sign up';
+const String rGoogleSignUp = "Sign up with Google";
+const String rSignUpTitle = 'Get On Board.';
+const String rSignUpSubTitle = 'Start your journey with us...';
+const String rAccAvailable = 'Already have an account? ';
