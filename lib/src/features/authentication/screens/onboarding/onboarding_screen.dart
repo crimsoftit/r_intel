@@ -53,7 +53,7 @@ class OnboardingScreen extends StatelessWidget {
               onPressed: () => oBcontroller.skip(),
               child: const PrimaryText(
                 text: 'Skip',
-                size: 12,
+                size: 10,
                 color: Colors.grey,
               ),
             ),

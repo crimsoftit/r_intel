@@ -22,3 +22,5 @@ const String rWelcomeScreenImg1 =
 const String rLoginImg = "assets/images/login/login.png";
 const String rSignupImg = "assets/images/login/signup1.png";
 const String rGoogleLogo = "assets/logos/google.png";
+
+const String rPswdResetImg = "assets/images/login/forgot_pswd.png";

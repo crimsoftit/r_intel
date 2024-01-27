@@ -19,7 +19,7 @@ class PrimaryText extends StatelessWidget {
     this.color = rSecondaryColor,
     this.size = 20,
     this.height = 1.3,
-    this.txtAlign = TextAlign.center,
+    this.txtAlign = TextAlign.start,
   });
 
   @override

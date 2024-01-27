@@ -36,7 +36,7 @@ class OnboardingPageWidget extends StatelessWidget {
               ),
               PrimaryText(
                 text: model.subTitle,
-                size: 12,
+                size: 10,
                 txtAlign: TextAlign.center,
               ),
               const SizedBox(
@@ -44,7 +44,7 @@ class OnboardingPageWidget extends StatelessWidget {
               ),
               PrimaryText(
                 text: model.sliderText,
-                size: 10,
+                size: 8,
               ),
             ],
           ),

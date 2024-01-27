@@ -1,0 +1,72 @@
+import 'package:flutter/material.dart';
+import 'package:r_intel/src/common_widgets/form/form_header_widget.dart';
+import 'package:r_intel/src/constants/image_strings.dart';
+import 'package:r_intel/src/constants/size.dart';
+import 'package:r_intel/src/constants/style/textfield_style.dart';
+import 'package:r_intel/src/constants/text_strings.dart';
+
+class ResetPasswordMailScreen extends StatelessWidget {
+  ResetPasswordMailScreen({super.key});
+
+  final TextEditingController _txtEmail = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(rDefaultSize),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: rDefaultSize * 4,
+                ),
+                const FormHeaderWidget(
+                  image: rPswdResetImg,
+                  title: 'Reset Password',
+                  subTitle: rResetPswdSubTitle,
+                  heightBetween: 30.0,
+                ),
+                const SizedBox(
+                  height: rFormHeight,
+                ),
+                Form(
+                  child: Column(
+                    children: [
+                      RTextfield(
+                        txtController: _txtEmail,
+                        inputDecoration: const InputDecoration(
+                          label: Text('Email'),
+                          hintText: 'Email',
+                          prefixIcon: Icon(Icons.person_outline_outlined),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Next'.toUpperCase(),
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

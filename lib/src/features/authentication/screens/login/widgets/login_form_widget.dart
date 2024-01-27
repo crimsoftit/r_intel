@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:r_intel/src/constants/style/textfield_style.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
 
+import 'package:r_intel/src/features/authentication/screens/pswd_reset/reset_pswd_options/reset_pswd_modal.dart';
+
 class LoginForm extends StatelessWidget {
   LoginForm({
     super.key,
@@ -44,13 +46,14 @@ class LoginForm extends StatelessWidget {
                 ),
               ),
             ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
+
+            // -- RESET PASSWORD BUTTON
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  ResetPasswordScreen.buildShowModalBottomSheet(context);
+                },
                 child: const PrimaryText(
                   text: 'Forgot password?',
                   size: 10,
@@ -59,6 +62,8 @@ class LoginForm extends StatelessWidget {
                 ),
               ),
             ),
+
+            // --LOGIN BUTTON
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(

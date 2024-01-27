@@ -13,6 +13,14 @@ class TxtTheme {
       fontSize: 16,
       color: Colors.brown,
     ),
+
+    bodyMedium: TextStyle(
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w600,
+      fontSize: 12,
+      color: Colors.brown,
+    ),
+
     bodySmall: TextStyle(
       fontFamily: 'Poppins',
       fontSize: 10,
@@ -40,6 +48,12 @@ class TxtTheme {
       fontFamily: 'Poppins',
       fontSize: 16,
       color: Colors.white,
+    ),
+    bodyMedium: TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 12,
+      color: Colors.white,
+      fontWeight: FontWeight.w600,
     ),
     bodySmall: TextStyle(
       fontFamily: 'Poppins',

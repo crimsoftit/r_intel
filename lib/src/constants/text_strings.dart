@@ -39,3 +39,17 @@ const String rGoogleSignUp = "Sign up with Google";
 const String rSignUpTitle = 'Get On Board.';
 const String rSignUpSubTitle = 'Start your journey with us...';
 const String rAccAvailable = 'Already have an account? ';
+
+// -- reset password screen text
+const String rResetPswdTitle = "Make a selection!";
+const String rResetPswdSubTitle =
+    "Select one of the options below to reset your password.";
+const String rResetViaEmail = "Reset via E-mail verification.";
+const String rResetViaPhone = "Reset via phone no. verification.";
+
+// -- reset password via e-mail text
+const String rEmailVerification = "Enter your registered email to recieve OTP";
+
+// -- reset password via phone text
+const String rPhoneVerification =
+    "Enter your registered phone no. to recieve OTP";
