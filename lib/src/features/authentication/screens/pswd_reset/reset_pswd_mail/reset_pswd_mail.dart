@@ -3,7 +3,6 @@ import 'package:r_intel/src/common_widgets/form/form_header_widget.dart';
 import 'package:r_intel/src/constants/image_strings.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/textfield_style.dart';
-import 'package:r_intel/src/constants/text_strings.dart';
 
 class ResetPasswordMailScreen extends StatelessWidget {
   ResetPasswordMailScreen({super.key});
@@ -26,7 +25,7 @@ class ResetPasswordMailScreen extends StatelessWidget {
                 const FormHeaderWidget(
                   image: rPswdResetImg,
                   title: 'Reset Password',
-                  subTitle: rResetPswdSubTitle,
+                  subTitle: 'Enter your email address and select "NEXT"',
                   heightBetween: 30.0,
                 ),
                 const SizedBox(
@@ -40,7 +39,7 @@ class ResetPasswordMailScreen extends StatelessWidget {
                         inputDecoration: const InputDecoration(
                           label: Text('Email'),
                           hintText: 'Email',
-                          prefixIcon: Icon(Icons.person_outline_outlined),
+                          prefixIcon: Icon(Icons.mail_lock_outlined),
                         ),
                       ),
                       const SizedBox(

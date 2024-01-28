@@ -4,6 +4,7 @@ import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
 import 'package:r_intel/src/features/authentication/screens/pswd_reset/reset_pswd_mail/reset_pswd_mail.dart';
 import 'package:r_intel/src/features/authentication/screens/pswd_reset/reset_pswd_options/reset_pswd_btn_widget.dart';
+import 'package:r_intel/src/features/authentication/screens/pswd_reset/reset_pswd_otp/otp_screen.dart';
 
 class ResetPasswordScreen {
   static Future<dynamic> buildShowModalBottomSheet(BuildContext context) {
@@ -44,7 +45,9 @@ class ResetPasswordScreen {
               btnIcon: Icons.mobile_friendly_rounded,
               title: 'Phone No.',
               subTitle: rResetViaPhone,
-              onTap: () {},
+              onTap: () {
+                Get.to(const OTPScreen());
+              },
             ),
           ],
         ),

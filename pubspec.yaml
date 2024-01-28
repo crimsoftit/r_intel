@@ -67,6 +67,8 @@ dependencies:
   # swipe/slideshow and indicator 
   liquid_swipe: ^3.0.0
   smooth_page_indicator: ^1.1.0
+
+  flutter_otp_text_field: ^1.1.0+2
   
 
 dev_dependencies:

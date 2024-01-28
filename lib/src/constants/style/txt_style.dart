@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:r_intel/src/constants/colors.dart';
 
 class PrimaryText extends StatelessWidget {
   final double size;
   final FontWeight fontWeight;
   final FontStyle fontStyle;
-  final Color color;
+  final Color? color;
   final String text;
   final double height;
   final TextAlign txtAlign;
@@ -16,7 +15,8 @@ class PrimaryText extends StatelessWidget {
     required this.text,
     this.fontWeight = FontWeight.w400,
     this.fontStyle = FontStyle.italic,
-    this.color = rSecondaryColor,
+    //this.color = rSecondaryColor,
+    this.color,
     this.size = 20,
     this.height = 1.3,
     this.txtAlign = TextAlign.start,
@@ -28,7 +28,7 @@ class PrimaryText extends StatelessWidget {
       text,
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: context.isDarkMode ? Colors.white : rSecondaryColor,
+        color: context.isDarkMode ? Colors.white : color,
         height: height,
         fontFamily: 'Poppins',
         fontSize: size,

@@ -53,3 +53,8 @@ const String rEmailVerification = "Enter your registered email to recieve OTP";
 // -- reset password via phone text
 const String rPhoneVerification =
     "Enter your registered phone no. to recieve OTP";
+
+// -- OTP screen text
+const String rOtpTitle = "CO\nDE";
+const String rOtpSubTitle = "Verification";
+const String rOtpMsg = "Enter the verification code sent to: ";
