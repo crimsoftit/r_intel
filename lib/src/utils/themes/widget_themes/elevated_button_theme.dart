@@ -10,7 +10,7 @@ class RElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: rWhiteColor,
-      backgroundColor: rSecondaryColor,
+      backgroundColor: rPrimaryBrown,
       side: const BorderSide(color: Colors.brown),
       padding: const EdgeInsets.symmetric(
         vertical: rButtonHeight * 0.5,

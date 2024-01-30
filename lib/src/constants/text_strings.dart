@@ -58,3 +58,13 @@ const String rPhoneVerification =
 const String rOtpTitle = "CO\nDE";
 const String rOtpSubTitle = "Verification";
 const String rOtpMsg = "Enter the verification code sent to: ";
+
+// -- Dashboard screen text
+const String rDashboardTitle = "Hey, Welcome";
+const String rDashboardHeading = "Explore Courses";
+const String rDashboardSearch = "Search...";
+const String rDashboardBannerTitle1 = "Android for beginners";
+const String rDashboardBannerTitle2 = "JAVA";
+const String rDashboardBannerSubTitle = "10 lessons";
+const String rDashboardBtn = "View all";
+const String rDashboardTopCourses = "Top courses";

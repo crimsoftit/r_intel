@@ -22,7 +22,7 @@ class OTPScreen extends StatelessWidget {
             ),
             PrimaryText(
               text: rOtpSubTitle.toUpperCase(),
-              size: 16,
+              size: 13,
               fontWeight: FontWeight.w400,
             ),
             const SizedBox(

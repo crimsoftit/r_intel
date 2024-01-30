@@ -95,10 +95,14 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/logos/
+    - assets/images/dashboard/
+    - assets/images/login/
     - assets/images/on_boarding_images/
     - assets/images/welcome_screen_images/
-    - assets/images/login/
+    - assets/logos/
+    
+    
+    
 
 
     - assets/images/content/user.png
