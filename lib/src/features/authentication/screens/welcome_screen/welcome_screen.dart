@@ -28,7 +28,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final isDarkMode = brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDarkMode ? rSecondaryColor : rPrimaryColor,
+      backgroundColor:
+          isDarkMode ? rSecondaryColor : rOnboardingPage2ColorLight,
       body: Stack(
         children: [
           Container(

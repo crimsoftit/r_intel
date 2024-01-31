@@ -6,6 +6,8 @@ const rPrimaryBrown = Color(0xffffdcbd);
 const rSecondaryColor = Color(0xff272727);
 const rAccentColor = Color(0xff001bff);
 
+const rBrown = Colors.brown;
+
 const rWhiteColor = Colors.white;
 const rDarkColor = Colors.black;
 const rCardBgColor = Color(0xfff7f6f1);

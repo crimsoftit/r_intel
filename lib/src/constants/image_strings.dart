@@ -24,3 +24,7 @@ const String rSignupImg = "assets/images/login/signup1.png";
 const String rGoogleLogo = "assets/logos/google.png";
 
 const String rPswdResetImg = "assets/images/login/forgot_pswd.png";
+
+// -- dashboard images
+const rProfileImg = "assets/images/dashboard/batman.jpg";
+const rBannerImg1 = "assets/images/dashboard/banner_1.jpeg";

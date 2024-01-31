@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:r_intel/src/constants/style/textfield_style.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
 
 import 'package:r_intel/src/features/authentication/screens/pswd_reset/reset_pswd_options/reset_pswd_modal.dart';
+import 'package:r_intel/src/features/core/screens/dashboard/dashboard.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({
@@ -67,7 +69,9 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(const Dashboard());
+                },
                 child: Text(
                   'Login'.toUpperCase(),
                   style: const TextStyle(

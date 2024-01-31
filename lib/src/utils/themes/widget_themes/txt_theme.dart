@@ -13,26 +13,28 @@ class TxtTheme {
       fontSize: 16,
       color: Colors.brown,
     ),
-
     bodyMedium: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w600,
       fontSize: 12,
       color: Colors.brown,
     ),
-
     bodySmall: TextStyle(
       fontFamily: 'Poppins',
       fontSize: 10,
       color: Colors.grey,
     ),
-
+    labelMedium: TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 9,
+      color: Colors.brown,
+    ),
     labelSmall: TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 10,
-      fontStyle: FontStyle.italic,
-      color: Colors.blue,
+      fontSize: 8,
+      color: Colors.grey,
     ),
+
     // titleSmall: GoogleFonts.poppins(
     //   color: Colors.white60,
     //   fontSize: 24,
@@ -60,11 +62,15 @@ class TxtTheme {
       fontSize: 10,
       color: Colors.white,
     ),
+    labelMedium: TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 9,
+      color: Colors.white,
+    ),
     labelSmall: TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 10,
-      fontStyle: FontStyle.italic,
-      color: Colors.blue,
+      fontSize: 8,
+      color: Colors.grey,
     ),
   );
 }
