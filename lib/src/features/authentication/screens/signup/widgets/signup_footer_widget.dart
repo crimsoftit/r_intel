@@ -51,7 +51,9 @@ class SignupFooterWidget extends StatelessWidget {
                 ),
                 TextSpan(
                   text: rLogin,
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.bodySmall!.apply(
+                        color: Colors.blue,
+                      ),
                 ),
               ],
             ),

@@ -19,6 +19,8 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
+    // variables
+    final txtTheme = Theme.of(context).textTheme;
     final controller = Get.put(FadeInAnimationController());
     controller.startAnimation();
 
@@ -69,6 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         },
                         child: Text(
                           'Login'.toUpperCase(),
+                          style: txtTheme.bodyMedium,
                         ),
                       ),
                     ),
@@ -80,8 +83,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         onPressed: () {
                           Get.to(SignUpScreen());
                         },
-                        child: Text(
-                          'Sign up'.toUpperCase(),
+                        child: PrimaryText(
+                          text: 'Sign up'.toUpperCase(),
+                          size: 12,
                         ),
                       ),
                     ),

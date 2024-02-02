@@ -13,7 +13,7 @@ class RElevatedButtonTheme {
       backgroundColor: Colors.brown,
       side: const BorderSide(color: Colors.brown),
       padding: const EdgeInsets.symmetric(
-        vertical: rButtonHeight * 0.5,
+        vertical: rButtonHeight * 0.6,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),

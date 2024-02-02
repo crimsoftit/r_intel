@@ -29,7 +29,8 @@ class OnboardingPageWidget extends StatelessWidget {
             children: [
               PrimaryText(
                 text: model.title,
-                size: 16,
+                size: 13,
+                fontWeight: FontWeight.w500,
               ),
               const SizedBox(
                 height: 20,
