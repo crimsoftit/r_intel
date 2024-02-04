@@ -9,6 +9,10 @@ class OTPScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context);
+    var brightness = mediaQuery.platformBrightness;
+    final isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(rDefaultSize),
@@ -39,7 +43,9 @@ class OTPScreen extends StatelessWidget {
             OtpTextField(
               numberOfFields: 6,
               filled: true,
-              fillColor: Colors.brown.withOpacity(0.1),
+              fillColor: isDarkMode
+                  ? Colors.white.withOpacity(0.8)
+                  : Colors.brown.withOpacity(0.1),
               keyboardType: TextInputType.number,
               onSubmit: (code) {
                 print("OTP code is $code");

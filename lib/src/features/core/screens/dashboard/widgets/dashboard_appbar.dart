@@ -3,6 +3,7 @@ import 'package:r_intel/src/constants/colors.dart';
 import 'package:r_intel/src/constants/image_strings.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
+import 'package:r_intel/src/repository/auth_repo.dart';
 
 class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   const DashboardAppBar({
@@ -35,7 +36,9 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: rCardBgColor,
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              AuthRepo.instance.logout();
+            },
             icon: const Image(
               image: AssetImage(rProfileImg),
             ),

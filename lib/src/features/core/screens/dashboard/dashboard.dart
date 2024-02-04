@@ -4,7 +4,7 @@ import 'package:r_intel/src/constants/image_strings.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
-import 'package:r_intel/src/features/core/screens/dashboard/widgets/appbar.dart';
+import 'package:r_intel/src/features/core/screens/dashboard/widgets/dashboard_appbar.dart';
 import 'package:r_intel/src/features/core/screens/dashboard/widgets/best_sellers.dart';
 import 'package:r_intel/src/features/core/screens/dashboard/widgets/search_box.dart';
 import 'package:r_intel/src/features/core/screens/dashboard/widgets/top_courses.dart';
