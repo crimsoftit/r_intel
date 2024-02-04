@@ -7,12 +7,9 @@ import 'package:r_intel/src/features/authentication/screens/pswd_reset/reset_psw
 import 'package:r_intel/src/features/core/screens/dashboard/dashboard.dart';
 
 class LoginForm extends StatelessWidget {
-  LoginForm({
+  const LoginForm({
     super.key,
   });
-
-  final TextEditingController _txtEmail = TextEditingController();
-  final TextEditingController _txtPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +21,8 @@ class LoginForm extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RTextfield(
-              txtController: _txtEmail,
-              inputDecoration: const InputDecoration(
+            const RTextfield(
+              inputDecoration: InputDecoration(
                 label: Text('Email'),
                 hintText: 'Email',
                 prefixIcon: Icon(Icons.person_outline_outlined),
@@ -36,9 +32,8 @@ class LoginForm extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            RTextfield(
-              txtController: _txtPassword,
-              inputDecoration: const InputDecoration(
+            const RTextfield(
+              inputDecoration: InputDecoration(
                 prefixIcon: Icon(Icons.fingerprint),
                 labelText: 'Password',
                 hintText: 'Password',

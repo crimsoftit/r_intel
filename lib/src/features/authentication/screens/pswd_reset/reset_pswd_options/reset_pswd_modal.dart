@@ -35,7 +35,7 @@ class ResetPasswordScreen {
               subTitle: rResetViaEmail,
               onTap: () {
                 Navigator.pop(context);
-                Get.to(ResetPasswordMailScreen());
+                Get.to(const ResetPasswordMailScreen());
               },
             ),
             const SizedBox(

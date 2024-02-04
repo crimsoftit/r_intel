@@ -82,7 +82,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          Get.to(SignUpScreen());
+                          Get.to(const SignUpScreen());
                         },
                         child: Text(
                           'Sign up'.toUpperCase(),

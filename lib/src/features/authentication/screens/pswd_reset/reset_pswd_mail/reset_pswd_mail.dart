@@ -5,9 +5,7 @@ import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/textfield_style.dart';
 
 class ResetPasswordMailScreen extends StatelessWidget {
-  ResetPasswordMailScreen({super.key});
-
-  final TextEditingController _txtEmail = TextEditingController();
+  const ResetPasswordMailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +32,8 @@ class ResetPasswordMailScreen extends StatelessWidget {
                 Form(
                   child: Column(
                     children: [
-                      RTextfield(
-                        txtController: _txtEmail,
-                        inputDecoration: const InputDecoration(
+                      const RTextfield(
+                        inputDecoration: InputDecoration(
                           label: Text('Email'),
                           hintText: 'Email',
                           prefixIcon: Icon(Icons.mail_lock_outlined),

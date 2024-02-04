@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "227114254458",
+    "project_id": "duara-977ea",
+    "storage_bucket": "duara-977ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227114254458:android:a4e3c8f05e346662087bc3",
+        "android_client_info": {
+          "package_name": "com.example.r_intel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaIRq5AjTNi-Xfsa01VQhT6PcpvSl-KkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
