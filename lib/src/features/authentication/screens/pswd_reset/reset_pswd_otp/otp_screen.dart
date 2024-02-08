@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:get/get.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
+import 'package:r_intel/src/features/authentication/controllers/otp_controller.dart';
+import 'package:r_intel/src/features/authentication/controllers/signup_controller.dart';
 
 class OTPScreen extends StatelessWidget {
   const OTPScreen({super.key});
@@ -12,6 +15,10 @@ class OTPScreen extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context);
     var brightness = mediaQuery.platformBrightness;
     final isDarkMode = brightness == Brightness.dark;
+
+    var otp;
+
+    final signupController = Get.put(SignupController());
 
     return Scaffold(
       body: Container(
@@ -32,8 +39,8 @@ class OTPScreen extends StatelessWidget {
             const SizedBox(
               height: 40.0,
             ),
-            const PrimaryText(
-              text: "$rOtpMsg+254 746 683 785",
+            PrimaryText(
+              text: rOtpMsg + signupController.cell_no.toString(),
               size: 10,
               fontWeight: FontWeight.w400,
             ),
@@ -48,7 +55,8 @@ class OTPScreen extends StatelessWidget {
                   : Colors.brown.withOpacity(0.1),
               keyboardType: TextInputType.number,
               onSubmit: (code) {
-                print("OTP code is $code");
+                otp = code;
+                OTPController.instance.verifyOPT(otp);
               },
             ),
             const SizedBox(
@@ -57,7 +65,9 @@ class OTPScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  OTPController.instance.verifyOPT(otp);
+                },
                 child: Text(
                   'Next'.toUpperCase(),
                   style: const TextStyle(

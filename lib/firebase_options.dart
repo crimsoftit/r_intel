@@ -67,6 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '227114254458',
     projectId: 'duara-977ea',
     storageBucket: 'duara-977ea.appspot.com',
+    androidClientId: '227114254458-l529dlrco3phhcfnhphpegr2c6leka1u.apps.googleusercontent.com',
+    iosClientId: '227114254458-o791892d5iqdavrdvsb3gpu2jq3mm9bh.apps.googleusercontent.com',
     iosBundleId: 'com.example.rIntel',
   );
 
@@ -76,6 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '227114254458',
     projectId: 'duara-977ea',
     storageBucket: 'duara-977ea.appspot.com',
+    androidClientId: '227114254458-l529dlrco3phhcfnhphpegr2c6leka1u.apps.googleusercontent.com',
+    iosClientId: '227114254458-b8fe77afh6g36fid4bbav2l2l0isbcr4.apps.googleusercontent.com',
     iosBundleId: 'com.example.rIntel.RunnerTests',
   );
 }

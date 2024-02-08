@@ -7,14 +7,14 @@ class RTextFormFieldTheme {
   static InputDecorationTheme lightInputDecorationTheme =
       const InputDecorationTheme(
     border: OutlineInputBorder(),
-    prefixIconColor: rSecondaryColor,
+    prefixIconColor: rBrown,
     floatingLabelStyle: TextStyle(
-      color: rSecondaryColor,
+      color: rBrown,
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(
         width: 2.0,
-        color: rSecondaryColor,
+        color: rBrown,
       ),
     ),
   );

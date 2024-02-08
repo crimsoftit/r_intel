@@ -69,6 +69,8 @@ dependencies:
   # swipe/slideshow and indicator 
   liquid_swipe: ^3.0.0
   smooth_page_indicator: ^1.1.0
+  
+  intl_phone_field: ^3.2.0
 
   
   

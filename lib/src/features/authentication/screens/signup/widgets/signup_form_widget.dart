@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:r_intel/src/constants/colors.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/textfield_style.dart';
 import 'package:r_intel/src/features/authentication/controllers/signup_controller.dart';
+import 'package:r_intel/src/features/authentication/screens/pswd_reset/reset_pswd_otp/otp_screen.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({super.key});
@@ -13,6 +15,7 @@ class SignUpFormWidget extends StatelessWidget {
     final controller = Get.put(SignupController());
 
     final _formKey = GlobalKey<FormState>();
+    FocusNode focusNode = FocusNode();
 
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -47,14 +50,39 @@ class SignUpFormWidget extends StatelessWidget {
             const SizedBox(
               height: rFormHeight - 20,
             ),
-            RTextfield(
-              txtController: controller.phoneNo,
-              inputDecoration: const InputDecoration(
+            IntlPhoneField(
+              controller: controller.phoneNo,
+              focusNode: focusNode,
+              dropdownTextStyle: const TextStyle(
+                fontSize: 10,
+                fontFamily: 'Poppins',
+                height: 0.8,
+              ),
+              decoration: const InputDecoration(
+                counterText: '',
                 label: Text('Phone number'),
-                prefixIcon: Icon(
-                  Icons.numbers_outlined,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 2.0,
+                    color: rBrown,
+                  ),
                 ),
               ),
+              style: const TextStyle(
+                fontSize: 10,
+                fontFamily: 'Poppins',
+                height: 0.8,
+              ),
+              keyboardType: TextInputType.phone,
+              languageCode: "en",
+              onChanged: (phone) {
+                controller.cell_no.value = phone.completeNumber;
+
+                print(controller.cell_no.value);
+              },
+              onCountryChanged: (country) {
+                print('country changed to: ${country.name}');
+              },
             ),
             const SizedBox(
               height: rFormHeight - 20,
@@ -88,10 +116,14 @@ class SignUpFormWidget extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    SignupController.instance.registerUser(
-                      controller.email.text.trim(),
-                      controller.password.text.trim(),
-                    );
+                    // SignupController.instance.registerUser(
+                    //   controller.email.text.trim(),
+                    //   controller.password.text.trim(),
+                    // );
+
+                    SignupController.instance
+                        .phoneAuthentication(controller.phoneNo.text.trim());
+                    Get.to(const OTPScreen());
                   }
                 },
                 child: Text(
