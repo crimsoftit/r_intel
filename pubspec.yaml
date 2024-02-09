@@ -31,13 +31,16 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # -- icon packages
   cupertino_icons: ^1.0.2
+  line_awesome_flutter: ^2.0.0
+   
 
-  # sqflite database storage
+  # -- sqflite database storage
   sqflite: any
   sqflite_common_ffi: any
 
-  # firebase
+  # -- firebase packages
   firebase_core: ^2.24.2
   flutter_otp_text_field: ^1.1.0+2
   firebase_auth: ^4.16.0
@@ -102,6 +105,7 @@ flutter:
     - assets/images/dashboard/
     - assets/images/login/
     - assets/images/on_boarding_images/
+    - assets/images/profile/
     - assets/images/welcome_screen_images/
     - assets/logos/
     

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:r_intel/src/constants/colors.dart';
 import 'package:r_intel/src/constants/image_strings.dart';
 import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
-import 'package:r_intel/src/repository/auth_repo.dart';
+import 'package:r_intel/src/features/core/screens/profile/profile_screen.dart';
 
 class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   const DashboardAppBar({
@@ -37,7 +38,8 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           child: IconButton(
             onPressed: () {
-              AuthRepo.instance.logout();
+              //AuthRepo.instance.logout();
+              Get.to(const ProfileScreen());
             },
             icon: const Image(
               image: AssetImage(rProfileImg),
@@ -49,6 +51,5 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(55);
 }

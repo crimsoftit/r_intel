@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -78,10 +80,10 @@ class SignUpFormWidget extends StatelessWidget {
               onChanged: (phone) {
                 controller.cell_no.value = phone.completeNumber;
 
-                print(controller.cell_no.value);
+                //print(controller.cell_no.value);
               },
               onCountryChanged: (country) {
-                print('country changed to: ${country.name}');
+                //print('country changed to: ${country.name}');
               },
             ),
             const SizedBox(

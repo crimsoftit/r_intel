@@ -23,9 +23,9 @@ class SignupController extends GetxController {
   // get phone number from user and pass it to auth repo for firebase authentication
   void phoneAuthentication(String phoneNo) {
     phoneNo = cell_no.toString();
-    print("**********");
-    print(phoneNo);
-    print("**********");
+    // print("**********");
+    // print(phoneNo);
+    // print("**********");
     AuthRepo.instance.phoneAuth(phoneNo);
   }
 }

@@ -28,3 +28,6 @@ const String rPswdResetImg = "assets/images/login/forgot_pswd.png";
 // -- dashboard images
 const rProfileImg = "assets/images/dashboard/batman.jpg";
 const rBannerImg1 = "assets/images/dashboard/banner_1.jpeg";
+
+// -- profile screen images
+const rUserProfileImg = "assets/images/profile/dp_new.jpg";

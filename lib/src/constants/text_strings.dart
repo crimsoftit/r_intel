@@ -5,9 +5,9 @@ const String rAppName = ".retail_intel/";
 const String rAppTagLine = "retail ... \n redefined";
 
 // -- onboarding screen text formats
-const String rOnbaordingTitle1 = "Future-proof your business";
-const String rOnbaordingTitle2 = "Learn from the best";
-const String rOnbaordingTitle3 = "Save time & money";
+const String rOnbaordingTitle1 = "future-proof your bz with tech";
+const String rOnbaordingTitle2 = "learn from the best";
+const String rOnbaordingTitle3 = "save time & money";
 
 const String rOnbaordingSubTitle1 =
     "begin your journey with us on this easy & amazing platform";
@@ -59,7 +59,7 @@ const String rOtpTitle = "CO\nDE";
 const String rOtpSubTitle = "Verification";
 const String rOtpMsg = "Enter the verification code sent to: ";
 
-// -- Dashboard screen text
+// -- dashboard screen text
 const String rDashboardTitle = "Hey, Welcome";
 const String rDashboardHeading = "Explore Courses";
 const String rDashboardSearch = "Search...";
@@ -68,3 +68,22 @@ const String rDashboardBannerTitle2 = "JAVA";
 const String rDashboardBannerSubTitle = "10 lessons";
 const String rDashboardBtn = "View all";
 const String rDashboardTopCourses = "Top courses";
+
+// -- user profile screen text
+const String rProfile = 'your profile';
+const String rEditProfile = 'edit profile';
+const String rProfileHeading = 'duara';
+const String rProfileSubHeading = 'crimsoftit@gmail.com';
+const String rLogoutDialogHeadng = 'logout';
+
+// -- menu text
+const String rMenu1 = 'settings';
+const String rMenu2 = 'billing details';
+const String rMenu3 = 'user management';
+const String rMenu4 = 'information';
+const String rMenu5 = 'log out';
+
+// -- update profile screen text
+const String rDelete = 'delete';
+const String rJoined = 'joined';
+const String rJoinedAt = '9 Oct 2024';

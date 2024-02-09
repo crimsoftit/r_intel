@@ -16,6 +16,7 @@ class OTPScreen extends StatelessWidget {
     var brightness = mediaQuery.platformBrightness;
     final isDarkMode = brightness == Brightness.dark;
 
+    Get.put(OTPController());
     var otp;
 
     final signupController = Get.put(SignupController());
@@ -66,7 +67,7 @@ class OTPScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  OTPController.instance.verifyOPT(otp);
+                  OTPController.instance.verifyOPT(otp.toString());
                 },
                 child: Text(
                   'Next'.toUpperCase(),
