@@ -4,14 +4,15 @@ import 'package:r_intel/src/constants/colors.dart';
 class RTextFormFieldTheme {
   RTextFormFieldTheme._();
 
-  static InputDecorationTheme lightInputDecorationTheme =
-      const InputDecorationTheme(
-    border: OutlineInputBorder(),
+  static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
     prefixIconColor: rBrown,
-    floatingLabelStyle: TextStyle(
+    floatingLabelStyle: const TextStyle(
       color: rBrown,
     ),
-    focusedBorder: OutlineInputBorder(
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(
         width: 2.0,
         color: rBrown,
@@ -19,17 +20,19 @@ class RTextFormFieldTheme {
     ),
   );
 
-  static InputDecorationTheme darkInputDecorationTheme =
-      const InputDecorationTheme(
-    border: OutlineInputBorder(),
+  static InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
     prefixIconColor: rPrimaryColor,
-    floatingLabelStyle: TextStyle(
+    floatingLabelStyle: const TextStyle(
       color: rPrimaryColor,
     ),
-    focusedBorder: OutlineInputBorder(
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(
         width: 2.0,
-        color: rPrimaryColor,
+        //color: rPrimaryColor,
+        color: rBrown,
       ),
     ),
   );

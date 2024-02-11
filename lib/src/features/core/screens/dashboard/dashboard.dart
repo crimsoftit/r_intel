@@ -7,7 +7,6 @@ import 'package:r_intel/src/constants/text_strings.dart';
 import 'package:r_intel/src/features/core/screens/dashboard/widgets/dashboard_appbar.dart';
 import 'package:r_intel/src/features/core/screens/dashboard/widgets/best_sellers.dart';
 import 'package:r_intel/src/features/core/screens/dashboard/widgets/search_box.dart';
-import 'package:r_intel/src/features/core/screens/dashboard/widgets/top_courses.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -187,7 +186,7 @@ class Dashboard extends StatelessWidget {
                   fontSizeFactor: 1.2,
                 ),
               ),
-              TopCourses(txtTheme: txtTheme),
+              //TopCourses(txtTheme: txtTheme),
             ],
           ),
         ),

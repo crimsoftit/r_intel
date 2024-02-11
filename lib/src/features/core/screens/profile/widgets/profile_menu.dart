@@ -20,6 +20,8 @@ class ProfileMenuWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isDarkMode =
+        MediaQuery.of(context).platformBrightness == Brightness.dark;
     return ListTile(
       onTap: onPress,
       leading: Container(
@@ -28,7 +30,10 @@ class ProfileMenuWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
           //color: rAccentColor.withOpacity(0.1),
-          color: rBrown.withOpacity(0.1),
+          //color: rBrown.withOpacity(0.1),
+          color: isDarkMode
+              ? Colors.white.withOpacity(0.5)
+              : rBrown.withOpacity(0.1),
         ),
         child: Icon(
           icon,

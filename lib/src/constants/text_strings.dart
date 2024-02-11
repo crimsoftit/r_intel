@@ -84,6 +84,6 @@ const String rMenu4 = 'information';
 const String rMenu5 = 'log out';
 
 // -- update profile screen text
-const String rDelete = 'delete';
-const String rJoined = 'joined';
+const String rDelete = 'delete profile';
+const String rJoined = 'joined  ';
 const String rJoinedAt = '9 Oct 2024';

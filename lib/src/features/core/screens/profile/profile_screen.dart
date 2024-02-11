@@ -8,6 +8,7 @@ import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
 import 'package:r_intel/src/features/core/screens/profile/update_profile_screen.dart';
 import 'package:r_intel/src/features/core/screens/profile/widgets/profile_menu.dart';
+import 'package:r_intel/src/repository/auth_repo.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -22,9 +23,9 @@ class ProfileScreen extends StatelessWidget {
           onPressed: () {
             Get.back();
           },
-          icon: const Icon(
+          icon: Icon(
             LineAwesomeIcons.angle_left,
-            color: rBrown,
+            color: isDarkMode ? Colors.white : rBrown,
           ),
         ),
         title: const PrimaryText(
@@ -40,8 +41,9 @@ class ProfileScreen extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: Icon(
-                isDarkMode ? LineAwesomeIcons.sun_1 : LineAwesomeIcons.moon_1,
-                color: rBrown),
+              isDarkMode ? LineAwesomeIcons.sun_1 : LineAwesomeIcons.moon_1,
+              color: isDarkMode ? Colors.white : rBrown,
+            ),
           ),
         ],
       ),
@@ -100,7 +102,7 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(
                 width: 200,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(() => const UpdateProfileScreen()),
+                  onPressed: () => Get.to(() => UpdateProfileScreen()),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: rBrown,
                     side: BorderSide.none,
@@ -108,10 +110,10 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   child: Text(
                     rEditProfile.toUpperCase(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 10,
                       fontFamily: 'Poppins',
-                      color: isDarkMode ? Colors.white : rSecondaryColor,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -158,7 +160,9 @@ class ProfileScreen extends StatelessWidget {
                 icon: LineAwesomeIcons.alternate_sign_out,
                 txtColor: Colors.red,
                 endIcon: false,
-                onPress: () {},
+                onPress: () {
+                  AuthRepo.instance.logout();
+                },
               ),
             ],
           ),
