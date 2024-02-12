@@ -10,6 +10,8 @@ class UserRepository extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
+
+  // -- create user (signup)
   createUser(UserModel user) async {
     await _db
         .collection("users")
@@ -34,4 +36,7 @@ class UserRepository extends GetxController {
       print(error.toString());
     });
   }
+
+  // -- fetch user details
+  Future<UserModel> 
 }
