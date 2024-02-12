@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:r_intel/src/repository/auth_repo.dart';
+import 'package:r_intel/src/features/authentication/models/user_model.dart';
+import 'package:r_intel/src/features/authentication/screens/pswd_reset/reset_pswd_otp/otp_screen.dart';
+import 'package:r_intel/src/repository/auth_repository/auth_repo.dart';
+import 'package:r_intel/src/repository/user_repository/user_repository.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
   // ignore: non_constant_identifier_names
   RxString cell_no = ''.obs;
+
+  final userRepo = Get.put(UserRepository());
 
   // textfield controllers to get user's input data from textfields
   final fullName = TextEditingController();
@@ -27,5 +32,12 @@ class SignupController extends GetxController {
     // print(phoneNo);
     // print("**********");
     AuthRepo.instance.phoneAuth(phoneNo);
+  }
+
+  // save user signup details to firestore database
+  Future<void> createUser(UserModel user) async {
+    await userRepo.createUser(user);
+    phoneAuthentication(user.phoneNo);
+    Get.to(const OTPScreen());
   }
 }

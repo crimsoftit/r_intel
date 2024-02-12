@@ -8,7 +8,7 @@ import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
 import 'package:r_intel/src/features/core/screens/profile/update_profile_screen.dart';
 import 'package:r_intel/src/features/core/screens/profile/widgets/profile_menu.dart';
-import 'package:r_intel/src/repository/auth_repo.dart';
+import 'package:r_intel/src/repository/auth_repository/auth_repo.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

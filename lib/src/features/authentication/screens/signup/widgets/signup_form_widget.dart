@@ -7,7 +7,7 @@ import 'package:r_intel/src/constants/colors.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/textfield_style.dart';
 import 'package:r_intel/src/features/authentication/controllers/signup_controller.dart';
-import 'package:r_intel/src/features/authentication/screens/pswd_reset/reset_pswd_otp/otp_screen.dart';
+import 'package:r_intel/src/features/authentication/models/user_model.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({super.key});
@@ -29,6 +29,7 @@ class SignUpFormWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             RTextfield(
+              obscureText: false,
               txtController: controller.fullName,
               inputDecoration: const InputDecoration(
                 label: Text('Full Name'),
@@ -41,6 +42,7 @@ class SignUpFormWidget extends StatelessWidget {
               height: rFormHeight - 20,
             ),
             RTextfield(
+              obscureText: false,
               txtController: controller.email,
               inputDecoration: const InputDecoration(
                 label: Text('Email'),
@@ -90,24 +92,42 @@ class SignUpFormWidget extends StatelessWidget {
               height: rFormHeight - 20,
             ),
             RTextfield(
+              obscureText: true,
               txtController: controller.password,
-              inputDecoration: const InputDecoration(
-                label: Text('Password'),
-                prefixIcon: Icon(
+              inputDecoration: InputDecoration(
+                label: const Text('Password'),
+                prefixIcon: const Icon(
                   Icons.fingerprint,
                 ),
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.visibility_off,
+                  ),
+                ),
+                alignLabelWithHint: false,
+                filled: true,
               ),
             ),
             const SizedBox(
               height: rFormHeight - 20,
             ),
             RTextfield(
+              obscureText: true,
               txtController: controller.confirmPassword,
-              inputDecoration: const InputDecoration(
-                label: Text('Confirm password'),
-                prefixIcon: Icon(
+              inputDecoration: InputDecoration(
+                label: const Text('Confirm password'),
+                prefixIcon: const Icon(
                   Icons.fingerprint,
                 ),
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.visibility_off,
+                  ),
+                ),
+                alignLabelWithHint: false,
+                filled: true,
               ),
             ),
             const SizedBox(
@@ -118,14 +138,20 @@ class SignUpFormWidget extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
+                    ///## email and password authentication
                     // SignupController.instance.registerUser(
                     //   controller.email.text.trim(),
                     //   controller.password.text.trim(),
                     // );
 
-                    SignupController.instance
-                        .phoneAuthentication(controller.phoneNo.text.trim());
-                    Get.to(const OTPScreen());
+                    final user = UserModel(
+                      fullName: controller.fullName.text.trim(),
+                      email: controller.email.text.trim(),
+                      phoneNo: controller.phoneNo.text.trim(),
+                      password: controller.password.text.trim(),
+                    );
+
+                    SignupController.instance.createUser(user);
                   }
                 },
                 child: Text(

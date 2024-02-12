@@ -21,8 +21,8 @@ class LoginForm extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const RTextfield(
-              inputDecoration: InputDecoration(
+            RTextfield(
+              inputDecoration: const InputDecoration(
                 label: Text('Email'),
                 hintText: 'Email',
                 prefixIcon: Icon(Icons.person_outline_outlined),
@@ -32,8 +32,8 @@ class LoginForm extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const RTextfield(
-              inputDecoration: InputDecoration(
+            RTextfield(
+              inputDecoration: const InputDecoration(
                 prefixIcon: Icon(Icons.fingerprint),
                 labelText: 'Password',
                 hintText: 'Password',

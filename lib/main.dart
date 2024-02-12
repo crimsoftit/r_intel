@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:r_intel/firebase_options.dart';
-import 'package:r_intel/src/repository/auth_repo.dart';
+import 'package:r_intel/src/repository/auth_repository/auth_repo.dart';
 import 'package:r_intel/src/utils/themes/themes.dart';
 
 void main() {

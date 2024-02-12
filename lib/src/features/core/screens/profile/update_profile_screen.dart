@@ -95,7 +95,7 @@ class UpdateProfileScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const RTextfield(
+                    RTextfield(
                       inputDecoration: InputDecoration(
                         label: Text('Full Name'),
                         prefixIcon: Icon(
@@ -106,7 +106,7 @@ class UpdateProfileScreen extends StatelessWidget {
                     const SizedBox(
                       height: rFormHeight - 20,
                     ),
-                    const RTextfield(
+                    RTextfield(
                       inputDecoration: InputDecoration(
                         label: Text('Email'),
                         prefixIcon: Icon(
@@ -149,7 +149,7 @@ class UpdateProfileScreen extends StatelessWidget {
                     const SizedBox(
                       height: rFormHeight - 20,
                     ),
-                    const RTextfield(
+                    RTextfield(
                       inputDecoration: InputDecoration(
                         label: Text('Password'),
                         prefixIcon: Icon(

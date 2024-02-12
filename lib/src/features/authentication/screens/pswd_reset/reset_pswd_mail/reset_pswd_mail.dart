@@ -32,7 +32,7 @@ class ResetPasswordMailScreen extends StatelessWidget {
                 Form(
                   child: Column(
                     children: [
-                      const RTextfield(
+                      RTextfield(
                         inputDecoration: InputDecoration(
                           label: Text('Email'),
                           hintText: 'Email',

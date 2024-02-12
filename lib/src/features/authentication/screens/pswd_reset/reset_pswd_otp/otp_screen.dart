@@ -54,7 +54,9 @@ class OTPScreen extends StatelessWidget {
               fillColor: isDarkMode
                   ? Colors.white.withOpacity(0.8)
                   : Colors.brown.withOpacity(0.1),
-              keyboardType: TextInputType.number,
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: false,
+              ),
               onSubmit: (code) {
                 otp = code;
                 OTPController.instance.verifyOPT(otp);

@@ -31,47 +31,63 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # -- icon packages
-  cupertino_icons: ^1.0.2
-  line_awesome_flutter: ^2.0.0
-   
-
-  # -- sqflite database storage
-  sqflite: any
-  sqflite_common_ffi: any
-
-  # -- firebase packages
-  firebase_core: ^2.24.2
-  flutter_otp_text_field: ^1.1.0+2
-  firebase_auth: ^4.16.0
-  
-  # format DateTime
-  intl: ^0.17.0
-  path_provider: any
-
-  # barcode/qrcode generation and scan
-  simple_barcode_scanner: ^0.0.8
-  flutter_barcode_scanner: ^2.0.0
-
-  flutter_svg: ^0.22.0
-  #fl_chart: ^0.65.0
-  fl_chart: ^0.35.0
-  provider: ^6.1.1
-  data_table_2: ^2.0.3
-  clock: ^1.1.1
 
   # state management
   get: ^4.6.6
   universal_io: ^2.2.2
   get_storage: ^2.1.1
 
+
+  # swipe/slideshow and indicator - onboardng packages
+  liquid_swipe: ^3.0.0
+  smooth_page_indicator: ^1.1.0
+
+
+  # -- otp textfield package
+  flutter_otp_text_field: ^1.1.0+2
+
+
+  # -- firebase packages
+  firebase_core: ^2.24.2  
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.2.0
+
+
+  # -- icon packages
+  cupertino_icons: ^1.0.2
+  line_awesome_flutter: ^2.0.0
+
+
+  # -- sqflite database storage
+  sqflite: any
+  sqflite_common_ffi: any
+
+
+  # format DateTime
+  intl: ^0.19.0
+  path_provider: any
+
+
+  # barcode/qrcode generation and scan
+  simple_barcode_scanner: ^0.0.8
+  flutter_barcode_scanner: ^2.0.0
+
+  flutter_svg: ^2.0.9
+
+  
+  #fl_chart: ^0.65.0
+  fl_chart: ^0.65.0
+  provider: ^6.1.1
+  data_table_2: ^2.0.3
+  clock: ^1.1.1
+
+  
+
   # google fonts
   google_fonts: ^6.1.0
   flutter_native_splash: ^2.2.0+1
 
-  # swipe/slideshow and indicator 
-  liquid_swipe: ^3.0.0
-  smooth_page_indicator: ^1.1.0
+  
   
   intl_phone_field: ^3.2.0
 
@@ -87,7 +103,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
