@@ -10,7 +10,6 @@ class UserRepository extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
-
   // -- create user (signup)
   createUser(UserModel user) async {
     await _db
@@ -23,6 +22,7 @@ class UserRepository extends GetxController {
             snackPosition: SnackPosition.BOTTOM,
             backgroundColor: Colors.green.withOpacity(0.1),
             colorText: Colors.green,
+            duration: const Duration(seconds: 10),
           ),
         )
         .catchError((error, stackTrace) {
@@ -32,11 +32,25 @@ class UserRepository extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.redAccent.withOpacity(0.1),
         colorText: Colors.red,
+        duration: const Duration(seconds: 10),
       );
       print(error.toString());
     });
   }
 
-  // -- fetch user details
-  Future<UserModel> 
+  // -- fetch user details by email
+  Future<UserModel> fetchUserDetails(String email) async {
+    final snapshot =
+        await _db.collection("users").where("Email", isEqualTo: email).get();
+    final userData = snapshot.docs.map((e) => UserModel.fromSnapshot(e)).single;
+    return userData;
+  }
+
+  // -- fetch all users
+  Future<List<UserModel>> fetchAllUsers() async {
+    final snapshot = await _db.collection("users").get();
+    final allUsers =
+        snapshot.docs.map((e) => UserModel.fromSnapshot(e)).toList();
+    return allUsers;
+  }
 }

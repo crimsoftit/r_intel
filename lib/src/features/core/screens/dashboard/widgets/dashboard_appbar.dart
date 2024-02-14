@@ -39,7 +39,7 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: IconButton(
             onPressed: () {
               //AuthRepo.instance.logout();
-              Get.to(const ProfileScreen());
+              Get.to(ProfileScreen());
             },
             icon: const Image(
               image: AssetImage(rProfileImg),

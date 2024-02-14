@@ -8,15 +8,18 @@ class RTextfield extends StatelessWidget {
     required this.inputDecoration,
     this.txtController,
     this.obscureText = false,
+    this.initialValue,
   });
 
   final InputDecoration inputDecoration;
   final TextEditingController? txtController;
+  final String? initialValue;
   late bool obscureText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       obscureText: obscureText,
       controller: txtController,
       style: const TextStyle(

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:r_intel/src/features/authentication/screens/onboarding/onboarding_screen.dart';
 import 'package:r_intel/src/features/authentication/screens/welcome_screen/welcome_screen.dart';
@@ -16,11 +17,7 @@ class AuthRepo extends GetxController {
   // -- loads upon app launch - function will be called to set firebaseUser state
   @override
   void onReady() {
-    Future.delayed(
-      const Duration(
-        seconds: 10,
-      ),
-    );
+    Future.delayed(const Duration(seconds: 20));
     firebaseUser = Rx<User?>(_auth.currentUser);
     firebaseUser.bindStream(_auth.userChanges());
     ever(firebaseUser, _setInitialScreen);
@@ -33,6 +30,72 @@ class AuthRepo extends GetxController {
         : Get.offAll(() => const Dashboard());
   }
 
+  // -- create user with email & password
+  Future<void> createUserWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      firebaseUser.value != null
+          ? Get.offAll(() => const Dashboard())
+          : Get.to(() => const WelcomeScreen());
+    } on FirebaseAuthException catch (e) {
+      final exception = SignupExceptions.code(e.code);
+      Get.snackbar(
+        'FIREBASE AUTH EXCEPTION',
+        exception.message,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.red,
+        duration: const Duration(seconds: 30),
+      );
+      print('FIREBASE AUTH EXCEPTION - ${exception.message}');
+      throw exception;
+    } catch (_) {
+      const exception = SignupExceptions();
+      Get.snackbar(
+        'EXCEPTION',
+        exception.message,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.red,
+      );
+      print('EXCEPTION - ${exception.message}');
+      throw exception;
+    }
+  }
+
+  // -- sign in with email & password
+  Future<void> loginWithEmailAndPassword(String email, String password) async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-email') {
+        Get.snackbar("ERROR!!", 'invalid email address');
+      } else if (e.code == 'invalid-password') {
+        Get.snackbar("ERROR!!", 'invalid password!');
+      }
+    } catch (_) {}
+  }
+
+  // -- login with phone number
+  loginWithPhoneNo(String phoneNumber) async {
+    try {
+      await _auth.signInWithPhoneNumber(phoneNumber);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-phone-number') {
+        Get.snackbar("ERROR!!", 'invalid phone number');
+      }
+    } catch (_) {
+      Get.snackbar("ERROR!!", "something went wrong. try again later");
+    }
+  }
+
   // -- phone verification
   Future<void> phoneAuth(String phoneNo) async {
     await _auth.verifyPhoneNumber(
@@ -40,17 +103,31 @@ class AuthRepo extends GetxController {
       verificationCompleted: (credential) async {
         await _auth.signInWithCredential(credential);
       },
-      codeSent: (verificationId, forceResendingToken) {
+      codeSent: (verificationId, resendToken) {
         this.verificationId.value = verificationId;
       },
       codeAutoRetrievalTimeout: (verificationId) {
         this.verificationId.value = verificationId;
       },
+      timeout: const Duration(seconds: 120),
       verificationFailed: (e) {
         if (e.code == 'invalid-phone-number') {
-          Get.snackbar('error!', 'invalid phone number!');
+          Get.snackbar(
+            'error!',
+            'invalid phone number!',
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.redAccent.withOpacity(0.1),
+            colorText: Colors.red,
+          );
         } else {
-          Get.snackbar('error!', 'something went wrong... try again');
+          final exception = SignupExceptions.code(e.code);
+          Get.snackbar(
+            'error!',
+            exception.message,
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.redAccent.withOpacity(0.1),
+            colorText: Colors.red,
+          );
         }
       },
     );
@@ -65,32 +142,7 @@ class AuthRepo extends GetxController {
     return credentials.user != null ? true : false;
   }
 
-  Future<void> createUserWithEmailAndPassword(
-      String email, String password) async {
-    try {
-      await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      firebaseUser.value != null
-          ? Get.offAll(() => const Dashboard())
-          : Get.to(() => const WelcomeScreen());
-    } on FirebaseAuthException catch (e) {
-      final exception = SignupExceptions.code(e.code);
-      print('FIREBASE AUTH EXCEPTION - ${exception.message}');
-      throw exception;
-    } catch (_) {
-      const exception = SignupExceptions();
-      print('EXCEPTION - ${exception.message}');
-      throw exception;
-    }
-  }
-
-  Future<void> signInWithEmailAndPassword(String email, String password) async {
-    try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-    } catch (_) {}
-  }
-
+  // -- log out user
   Future<void> logout() async {
     await _auth.signOut();
   }

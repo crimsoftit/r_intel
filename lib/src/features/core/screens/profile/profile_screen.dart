@@ -11,7 +11,9 @@ import 'package:r_intel/src/features/core/screens/profile/widgets/profile_menu.d
 import 'package:r_intel/src/repository/auth_repository/auth_repo.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+
+  final _authRepo = Get.put(AuthRepo());
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +94,8 @@ class ProfileScreen extends StatelessWidget {
                 size: 12,
                 fontWeight: FontWeight.w500,
               ),
-              const PrimaryText(
-                text: rProfileSubHeading,
+              PrimaryText(
+                text: '${_authRepo.firebaseUser.value!.email}',
                 size: 10,
               ),
               const SizedBox(

@@ -41,6 +41,20 @@ class SignUpFormWidget extends StatelessWidget {
             const SizedBox(
               height: rFormHeight - 20,
             ),
+            // TextFormField(
+            //   controller: controller.email,
+            //   readOnly: true,
+            //   decoration: InputDecoration(
+            //       labelText: 'Email',
+            //       labelStyle: textStyle,
+            //       hintStyle: const TextStyle(fontStyle: FontStyle.italic)),
+            //   validator: (value) {
+            //     if (value == null || value.isEmpty) {
+            //       return 'please type in your email address...';
+            //     }
+            //     return null;
+            //   },
+            // ),
             RTextfield(
               obscureText: false,
               txtController: controller.email,
@@ -55,6 +69,7 @@ class SignUpFormWidget extends StatelessWidget {
               height: rFormHeight - 20,
             ),
             IntlPhoneField(
+              initialCountryCode: 'KE',
               controller: controller.phoneNo,
               focusNode: focusNode,
               dropdownTextStyle: const TextStyle(
@@ -92,6 +107,7 @@ class SignUpFormWidget extends StatelessWidget {
               height: rFormHeight - 20,
             ),
             RTextfield(
+              //inkwell for toggle password
               obscureText: true,
               txtController: controller.password,
               inputDecoration: InputDecoration(
@@ -139,10 +155,9 @@ class SignUpFormWidget extends StatelessWidget {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     ///## email and password authentication
-                    // SignupController.instance.registerUser(
-                    //   controller.email.text.trim(),
-                    //   controller.password.text.trim(),
-                    // );
+                    SignupController.instance.registerUser(
+                        controller.email.text.trim(),
+                        controller.password.text.trim());
 
                     final user = UserModel(
                       fullName: controller.fullName.text.trim(),
