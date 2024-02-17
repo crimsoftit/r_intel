@@ -95,7 +95,7 @@ class ProfileScreen extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
               PrimaryText(
-                text: '${_authRepo.firebaseUser.value!.email}',
+                text: '${_authRepo.firebaseUser.value!.phoneNumber}',
                 size: 10,
               ),
               const SizedBox(

@@ -59,7 +59,7 @@ class OTPScreen extends StatelessWidget {
               ),
               onSubmit: (code) {
                 otp = code;
-                OTPController.instance.verifyOTP(otp);
+                OTPController.instance.verifyOTP(otp.toString());
               },
             ),
             const SizedBox(

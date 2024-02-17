@@ -14,12 +14,13 @@ import 'package:r_intel/src/features/core/controllers/profile_controller.dart';
 class UpdateProfileScreen extends StatelessWidget {
   UpdateProfileScreen({super.key});
 
-  final profileController = Get.put(ProfileController());
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     FocusNode focusNode = FocusNode();
-    final _formKey = GlobalKey<FormState>();
+    final profileController = Get.put(ProfileController());
+
     var isDarkMode =
         MediaQuery.of(context).platformBrightness == Brightness.dark;
 
@@ -105,7 +106,7 @@ class UpdateProfileScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             RTextfield(
-                              initialValue: userDetails.fullName,
+                              //initialValue: userDetails.fullName,
                               inputDecoration: const InputDecoration(
                                 label: Text('Full Name'),
                                 prefixIcon: Icon(
@@ -117,7 +118,7 @@ class UpdateProfileScreen extends StatelessWidget {
                               height: rFormHeight - 20,
                             ),
                             RTextfield(
-                              initialValue: userDetails.email,
+                              //initialValue: userDetails.email,
                               inputDecoration: const InputDecoration(
                                 label: Text('Email'),
                                 prefixIcon: Icon(
@@ -163,7 +164,7 @@ class UpdateProfileScreen extends StatelessWidget {
                               height: rFormHeight - 20,
                             ),
                             RTextfield(
-                              initialValue: userDetails.password,
+                              //initialValue: userDetails.password,
                               inputDecoration: const InputDecoration(
                                 label: Text('Password'),
                                 prefixIcon: Icon(

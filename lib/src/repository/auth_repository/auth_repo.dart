@@ -17,7 +17,7 @@ class AuthRepo extends GetxController {
   // -- loads upon app launch - function will be called to set firebaseUser state
   @override
   void onReady() {
-    Future.delayed(const Duration(seconds: 20));
+    //Future.delayed(const Duration(seconds: 20));
     firebaseUser = Rx<User?>(_auth.currentUser);
     firebaseUser.bindStream(_auth.userChanges());
     ever(firebaseUser, _setInitialScreen);
@@ -41,6 +41,42 @@ class AuthRepo extends GetxController {
       firebaseUser.value != null
           ? Get.offAll(() => const Dashboard())
           : Get.to(() => const WelcomeScreen());
+    } on FirebaseAuthException catch (e) {
+      final exception = SignupExceptions.code(e.code);
+      Get.snackbar(
+        'FIREBASE AUTH EXCEPTION',
+        exception.message,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.red,
+        duration: const Duration(seconds: 30),
+      );
+      print('FIREBASE AUTH EXCEPTION - ${exception.message}');
+      throw exception;
+    } catch (_) {
+      const exception = SignupExceptions();
+      Get.snackbar(
+        'EXCEPTION',
+        exception.message,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.red,
+      );
+      print('EXCEPTION - ${exception.message}');
+      throw exception;
+    }
+  }
+
+  // -- sign up user with email & password
+  Future<void> signUpWithEmailAndPassword(String email, String password) async {
+    try {
+      await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      // firebaseUser.value != null
+      //     ? Get.offAll(() => const Dashboard())
+      //     : Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
       final exception = SignupExceptions.code(e.code);
       Get.snackbar(
@@ -109,7 +145,6 @@ class AuthRepo extends GetxController {
       codeAutoRetrievalTimeout: (verificationId) {
         this.verificationId.value = verificationId;
       },
-      timeout: const Duration(seconds: 120),
       verificationFailed: (e) {
         if (e.code == 'invalid-phone-number') {
           Get.snackbar(
@@ -118,6 +153,7 @@ class AuthRepo extends GetxController {
             snackPosition: SnackPosition.BOTTOM,
             backgroundColor: Colors.redAccent.withOpacity(0.1),
             colorText: Colors.red,
+            duration: const Duration(seconds: 30),
           );
         } else {
           final exception = SignupExceptions.code(e.code);
@@ -127,6 +163,7 @@ class AuthRepo extends GetxController {
             snackPosition: SnackPosition.BOTTOM,
             backgroundColor: Colors.redAccent.withOpacity(0.1),
             colorText: Colors.red,
+            duration: const Duration(seconds: 30),
           );
         }
       },

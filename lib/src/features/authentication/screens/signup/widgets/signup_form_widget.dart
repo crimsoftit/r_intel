@@ -155,14 +155,19 @@ class SignUpFormWidget extends StatelessWidget {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     ///## email and password authentication
-                    SignupController.instance.registerUser(
-                        controller.email.text.trim(),
-                        controller.password.text.trim());
+                    // SignupController.instance.registerUser(
+                    //     controller.email.text.trim(),
+                    //     controller.password.text.trim());
+
+                    // SignupController.instance
+                    //     .phoneAuthentication(controller.phoneNo.text.trim());
+
+                    // Get.to(() => const OTPScreen());
 
                     final user = UserModel(
                       fullName: controller.fullName.text.trim(),
                       email: controller.email.text.trim(),
-                      phoneNo: controller.phoneNo.text.trim(),
+                      phoneNo: controller.phoneNo.text,
                       password: controller.password.text.trim(),
                     );
 

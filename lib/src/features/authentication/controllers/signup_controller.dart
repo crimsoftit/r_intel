@@ -22,7 +22,7 @@ class SignupController extends GetxController {
 
   // call this function from ui and it'll do the rest
   void registerUser(String email, String password) {
-    AuthRepo.instance.createUserWithEmailAndPassword(email, password);
+    AuthRepo.instance.signUpWithEmailAndPassword(email, password);
   }
 
   // get phone number from user and pass it to auth repo for firebase authentication
@@ -36,6 +36,10 @@ class SignupController extends GetxController {
 
   // save user signup details to firestore database
   Future<void> createUser(UserModel user) async {
+    // await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    //   email: user.email,
+    //   password: user.password,
+    // );
     await userRepo.createUser(user);
     phoneAuthentication(user.phoneNo);
     Get.to(const OTPScreen());
