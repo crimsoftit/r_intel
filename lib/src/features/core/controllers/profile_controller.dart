@@ -10,7 +10,7 @@ class ProfileController extends GetxController {
 
   // -- fetch user email and pass it to UserRepository to fetch user record
   getUserDetails() {
-    final email = _authRepo.firebaseUser.value!.phoneNumber;
+    final email = _authRepo.firebaseUser?.email;
     if (email != null) {
       return _userRepo.fetchUserDetails(email);
     } else {

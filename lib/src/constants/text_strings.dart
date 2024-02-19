@@ -25,7 +25,7 @@ const String rWelcomeTitle = "Retail re-defined";
 const String rWelcomeSubTitle =
     "Let's bring transparency, accountability, top-notch efficiency and integrity to your retail business";
 
-// -- login screen text
+// -- login screen - text
 const String rLogin = "Login";
 const String rLoginTitle = "Welcome back.";
 const String rLoginSubTitle = "Make it work, make it right, make it fast.";
@@ -33,33 +33,33 @@ const String rRememberMe = "Remember me?";
 const String rGoogleSignin = "Sign in with Google.";
 const String rNoAccount = "Don't have an account? ";
 
-// -- signup screen text
+// -- signup screen - text
 const String rSignUp = 'Sign up';
 const String rGoogleSignUp = "Sign up with Google";
 const String rSignUpTitle = 'Get On Board.';
 const String rSignUpSubTitle = 'Start your journey with us...';
 const String rAccAvailable = 'Already have an account? ';
 
-// -- reset password screen text
+// -- reset password screen - text
 const String rResetPswdTitle = "Make a selection!";
 const String rResetPswdSubTitle =
     "Select one of the options below to reset your password.";
 const String rResetViaEmail = "Reset via E-mail verification.";
 const String rResetViaPhone = "Reset via phone no. verification.";
 
-// -- reset password via e-mail text
+// -- reset password via e-mail - text
 const String rEmailVerification = "Enter your registered email to recieve OTP";
 
 // -- reset password via phone text
 const String rPhoneVerification =
     "Enter your registered phone no. to recieve OTP";
 
-// -- OTP screen text
+// -- OTP screen - text
 const String rOtpTitle = "CO\nDE";
 const String rOtpSubTitle = "Verification";
 const String rOtpMsg = "Enter the verification code sent to: ";
 
-// -- dashboard screen text
+// -- dashboard screen - text
 const String rDashboardTitle = "Hey, Welcome";
 const String rDashboardHeading = "Explore Courses";
 const String rDashboardSearch = "Search...";
@@ -69,21 +69,43 @@ const String rDashboardBannerSubTitle = "10 lessons";
 const String rDashboardBtn = "View all";
 const String rDashboardTopCourses = "Top courses";
 
-// -- user profile screen text
+// -- user profile screen - text
 const String rProfile = 'your profile';
 const String rEditProfile = 'edit profile';
 const String rProfileHeading = 'duara';
 const String rProfileSubHeading = 'crimsoftit@gmail.com';
 const String rLogoutDialogHeadng = 'logout';
 
-// -- menu text
+// -- menu - text
 const String rMenu1 = 'settings';
 const String rMenu2 = 'billing details';
 const String rMenu3 = 'user management';
 const String rMenu4 = 'information';
 const String rMenu5 = 'log out';
 
-// -- update profile screen text
+// -- update profile screen - text
 const String rDelete = 'delete profile';
 const String rJoined = 'joined  ';
 const String rJoinedAt = '9 Oct 2024';
+
+// -- snackbar - text
+const String rAlert = "Alert";
+const String rOhSnap = "ooh! snap!";
+const String rEmailSent = 'email is on its way.';
+const String rCongrats = 'Congrats!';
+const String rEmailLinkToResetPassword = 'email link to reset password.';
+const String rAcCreatedVerifyEmail =
+    "your account was successfully created! verify your email address.";
+
+// -- form validations - text
+const String rEmailRequired = "sorry! email cannot be empty.";
+const String rInvalidEmailFormat = 'invalid format for email address!';
+const String rNoRecordFound = 'account not found!';
+
+// mail verification screen - text
+const String rEmailVerificationTitle = "verify your e-mail address.";
+const String rEmailVerificationSubTitle =
+    'an email verification link has been sent to your email address. please check your email (including spam) and click on the link provided to verify your email address';
+const String rContinue = 'continue';
+const String rResendEmailLink = 'resend e-mail verification link?';
+const String rBackToLogin = 'back to login';

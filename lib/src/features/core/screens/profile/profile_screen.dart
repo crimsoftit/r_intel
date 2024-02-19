@@ -94,8 +94,15 @@ class ProfileScreen extends StatelessWidget {
                 size: 12,
                 fontWeight: FontWeight.w500,
               ),
+              Text(
+                _authRepo.firebaseUser!.emailVerified ? "email verified.." : '',
+                style: const TextStyle(
+                  fontSize: 10,
+                  fontFamily: 'Poppins',
+                ),
+              ),
               PrimaryText(
-                text: '${_authRepo.firebaseUser.value!.phoneNumber}',
+                text: '${_authRepo.firebaseUser?.email}',
                 size: 10,
               ),
               const SizedBox(

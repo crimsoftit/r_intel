@@ -7,7 +7,6 @@ import 'package:r_intel/src/constants/colors.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/textfield_style.dart';
 import 'package:r_intel/src/features/authentication/controllers/signup_controller.dart';
-import 'package:r_intel/src/features/authentication/models/user_model.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({super.key});
@@ -16,7 +15,6 @@ class SignUpFormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(SignupController());
 
-    final _formKey = GlobalKey<FormState>();
     FocusNode focusNode = FocusNode();
 
     return Container(
@@ -24,7 +22,7 @@ class SignUpFormWidget extends StatelessWidget {
         vertical: rFormHeight - 10,
       ),
       child: Form(
-        key: _formKey,
+        key: controller.signUpFormKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -100,7 +98,7 @@ class SignUpFormWidget extends StatelessWidget {
                 //print(controller.cell_no.value);
               },
               onCountryChanged: (country) {
-                //print('country changed to: ${country.name}');
+                print('country changed to: ${country.name}');
               },
             ),
             const SizedBox(
@@ -149,40 +147,45 @@ class SignUpFormWidget extends StatelessWidget {
             const SizedBox(
               height: rFormHeight - 10,
             ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    ///## email and password authentication
-                    // SignupController.instance.registerUser(
-                    //     controller.email.text.trim(),
-                    //     controller.password.text.trim());
 
-                    // SignupController.instance
-                    //     .phoneAuthentication(controller.phoneNo.text.trim());
-
-                    // Get.to(() => const OTPScreen());
-
-                    final user = UserModel(
-                      fullName: controller.fullName.text.trim(),
-                      email: controller.email.text.trim(),
-                      phoneNo: controller.phoneNo.text,
-                      password: controller.password.text.trim(),
-                    );
-
-                    SignupController.instance.createUser(user);
-                  }
-                },
-                child: Text(
-                  'Sign Up'.toUpperCase(),
+            Obx(
+              () => ElevatedButton.icon(
+                icon: controller.isLoading.value
+                    ? Container(
+                        width: 24.0,
+                        height: 24.0,
+                        padding: const EdgeInsets.all(2.0),
+                        child: const CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 3,
+                        ),
+                      )
+                    : const Icon(Icons.feedback),
+                label: Text(
+                  'Sign up'.toUpperCase(),
                   style: const TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     fontFamily: 'Poppins',
                   ),
                 ),
+                onPressed: controller.isLoading.value
+                    ? () {}
+                    : () => controller.createUser(),
               ),
             ),
+            // SizedBox(
+            //   width: double.infinity,
+            //   child: ElevatedButton(
+            //     onPressed: () {},
+            //     child: Text(
+            //       'Sign Up'.toUpperCase(),
+            //       style: const TextStyle(
+            //         fontSize: 10,
+            //         fontFamily: 'Poppins',
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

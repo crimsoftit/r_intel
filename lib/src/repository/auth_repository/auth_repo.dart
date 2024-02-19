@@ -1,33 +1,99 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:r_intel/src/features/authentication/screens/email_verification/mail_verification.dart';
+import 'package:r_intel/src/features/authentication/screens/login/login_screen.dart';
 import 'package:r_intel/src/features/authentication/screens/onboarding/onboarding_screen.dart';
-import 'package:r_intel/src/features/authentication/screens/welcome_screen/welcome_screen.dart';
 import 'package:r_intel/src/features/core/screens/dashboard/dashboard.dart';
+import 'package:r_intel/src/repository/auth_repository/exceptions/duara_exceptions.dart';
 import 'package:r_intel/src/repository/auth_repository/exceptions/signup_exceptions.dart';
 
 class AuthRepo extends GetxController {
   static AuthRepo get instance => Get.find();
 
-  // firebase variables
+  // -- firebase variables
+  late final Rx<User?> _firebaseUser;
   final _auth = FirebaseAuth.instance;
-  late final Rx<User?> firebaseUser;
   var verificationId = ''.obs;
+
+  //late final GoogleSignInAccount _googleUser;
+
+  // -- getters
+  User? get firebaseUser => _firebaseUser.value;
+
+  String get getUserId => firebaseUser?.uid ?? "";
+
+  String get getUserEmail => firebaseUser?.email ?? "";
 
   // -- loads upon app launch - function will be called to set firebaseUser state
   @override
   void onReady() {
     //Future.delayed(const Duration(seconds: 20));
-    firebaseUser = Rx<User?>(_auth.currentUser);
-    firebaseUser.bindStream(_auth.userChanges());
-    ever(firebaseUser, _setInitialScreen);
+    _firebaseUser = Rx<User?>(_auth.currentUser);
+    _firebaseUser.bindStream(_auth.userChanges());
+    FlutterNativeSplash.remove();
+    setInitialScreen(_firebaseUser.value);
+    //ever(_firebaseUser, _setInitialScreen);
   }
 
   // -- sets initial screen onLoad
-  _setInitialScreen(User? user) {
+  setInitialScreen(User? user) {
     user == null
         ? Get.offAll(() => const OnboardingScreen())
-        : Get.offAll(() => const Dashboard());
+        : user.emailVerified
+            ? Get.offAll(() => const Dashboard())
+            : Get.offAll(() => const MailVerification());
+  }
+
+  // -- sign in with email & password (login)
+  Future<void> loginWithEmailAndPassword(String email, String password) async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-email') {
+        Get.snackbar("ERROR!!", 'invalid email address');
+      } else if (e.code == 'invalid-password') {
+        Get.snackbar("ERROR!!", 'invalid password!');
+      } else {
+        const exception = DExceptions();
+        Get.snackbar(
+          'LOGIN EXCEPTION',
+          exception.message,
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          colorText: Colors.red,
+        );
+        //print('EXCEPTION - ${exception.message}');
+      }
+    } catch (_) {
+      const exception = SignupExceptions();
+      Get.snackbar(
+        'EXCEPTION',
+        exception.message,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.red,
+      );
+      //print('EXCEPTION - ${exception.message}');
+      throw exception;
+    }
+  }
+
+  // -- email verification [EmailVerification] (verification)
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      final exception = DExceptions.fromCode(e.code);
+      throw exception.message;
+    } catch (_) {
+      const exception = DExceptions();
+      throw exception;
+    }
   }
 
   // -- create user with email & password
@@ -38,43 +104,7 @@ class AuthRepo extends GetxController {
         email: email,
         password: password,
       );
-      firebaseUser.value != null
-          ? Get.offAll(() => const Dashboard())
-          : Get.to(() => const WelcomeScreen());
-    } on FirebaseAuthException catch (e) {
-      final exception = SignupExceptions.code(e.code);
-      Get.snackbar(
-        'FIREBASE AUTH EXCEPTION',
-        exception.message,
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
-        colorText: Colors.red,
-        duration: const Duration(seconds: 30),
-      );
-      print('FIREBASE AUTH EXCEPTION - ${exception.message}');
-      throw exception;
-    } catch (_) {
-      const exception = SignupExceptions();
-      Get.snackbar(
-        'EXCEPTION',
-        exception.message,
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
-        colorText: Colors.red,
-      );
-      print('EXCEPTION - ${exception.message}');
-      throw exception;
-    }
-  }
-
-  // -- sign up user with email & password
-  Future<void> signUpWithEmailAndPassword(String email, String password) async {
-    try {
-      await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      // firebaseUser.value != null
+      // _firebaseUser.value != null
       //     ? Get.offAll(() => const Dashboard())
       //     : Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
@@ -101,22 +131,6 @@ class AuthRepo extends GetxController {
       print('EXCEPTION - ${exception.message}');
       throw exception;
     }
-  }
-
-  // -- sign in with email & password
-  Future<void> loginWithEmailAndPassword(String email, String password) async {
-    try {
-      await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'invalid-email') {
-        Get.snackbar("ERROR!!", 'invalid email address');
-      } else if (e.code == 'invalid-password') {
-        Get.snackbar("ERROR!!", 'invalid password!');
-      }
-    } catch (_) {}
   }
 
   // -- login with phone number
@@ -181,6 +195,17 @@ class AuthRepo extends GetxController {
 
   // -- log out user
   Future<void> logout() async {
-    await _auth.signOut();
+    try {
+      // await GoogleSignIn().logout();
+      // await FacebookAuth.instance.logout();
+      await _auth.signOut();
+      Get.offAll(() => const LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw e.message!;
+    } on FormatException catch (e) {
+      throw e.message;
+    } catch (e) {
+      throw 'unable to log out! please try again';
+    }
   }
 }

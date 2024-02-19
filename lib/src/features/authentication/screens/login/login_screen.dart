@@ -4,8 +4,7 @@ import 'package:r_intel/src/constants/image_strings.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
 import 'package:r_intel/src/features/authentication/screens/login/widgets/login_footer_widget.dart';
-
-import 'package:r_intel/src/features/authentication/screens/login/widgets/login_form_widget.dart';
+import 'package:r_intel/src/features/authentication/screens/login/widgets/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
