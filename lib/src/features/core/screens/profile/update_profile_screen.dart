@@ -12,14 +12,12 @@ import 'package:r_intel/src/features/authentication/models/user_model.dart';
 import 'package:r_intel/src/features/core/controllers/profile_controller.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
-  UpdateProfileScreen({super.key});
-
-  final _formKey = GlobalKey<FormState>();
+  const UpdateProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    FocusNode focusNode = FocusNode();
     final profileController = Get.put(ProfileController());
+    FocusNode focusNode = FocusNode();
 
     var isDarkMode =
         MediaQuery.of(context).platformBrightness == Brightness.dark;
@@ -58,7 +56,6 @@ class UpdateProfileScreen extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(rDefaultSize),
           child: FutureBuilder(
-            future: profileController.getUserDetails(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasData) {
@@ -101,7 +98,7 @@ class UpdateProfileScreen extends StatelessWidget {
                         height: 50.0,
                       ),
                       Form(
-                        key: _formKey,
+                        key: profileController.updateProfileFormKey,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -118,7 +115,7 @@ class UpdateProfileScreen extends StatelessWidget {
                               height: rFormHeight - 20,
                             ),
                             RTextfield(
-                              initialValue: userDetails.email,
+                              //initialValue: userDetails.email,
                               inputDecoration: const InputDecoration(
                                 label: Text('Email'),
                                 prefixIcon: Icon(
@@ -131,7 +128,7 @@ class UpdateProfileScreen extends StatelessWidget {
                             ),
                             IntlPhoneField(
                               initialCountryCode: 'KE',
-                              initialValue: userDetails.phoneNo,
+                              //initialValue: userDetails.phoneNo,
                               focusNode: focusNode,
                               dropdownTextStyle: const TextStyle(
                                 fontSize: 10,
@@ -164,7 +161,8 @@ class UpdateProfileScreen extends StatelessWidget {
                               height: rFormHeight - 20,
                             ),
                             RTextfield(
-                              initialValue: userDetails.password,
+                              obscureText: true,
+                              //initialValue: userDetails.password,
                               inputDecoration: const InputDecoration(
                                 label: Text('Password'),
                                 prefixIcon: Icon(
@@ -265,6 +263,7 @@ class UpdateProfileScreen extends StatelessWidget {
                 );
               }
             },
+            future: profileController.getUserDetails(),
           ),
         ),
       ),

@@ -48,6 +48,13 @@ class AuthRepo extends GetxController {
 
   // -- sign in with email & password (login)
   Future<void> loginWithEmailAndPassword(String email, String password) async {
+    await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
+  Future<void> loginWithEmailNPassword(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(
         email: email,
@@ -56,8 +63,10 @@ class AuthRepo extends GetxController {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {
         Get.snackbar("ERROR!!", 'invalid email address');
+        return;
       } else if (e.code == 'invalid-password') {
         Get.snackbar("ERROR!!", 'invalid password!');
+        return;
       } else {
         const exception = DExceptions();
         Get.snackbar(
@@ -67,19 +76,9 @@ class AuthRepo extends GetxController {
           backgroundColor: Colors.redAccent.withOpacity(0.1),
           colorText: Colors.red,
         );
+        return;
         //print('EXCEPTION - ${exception.message}');
       }
-    } catch (_) {
-      const exception = SignupExceptions();
-      Get.snackbar(
-        'EXCEPTION',
-        exception.message,
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
-        colorText: Colors.red,
-      );
-      //print('EXCEPTION - ${exception.message}');
-      throw exception;
     }
   }
 
@@ -99,38 +98,10 @@ class AuthRepo extends GetxController {
   // -- create user with email & password
   Future<void> createUserWithEmailAndPassword(
       String email, String password) async {
-    try {
-      await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      // _firebaseUser.value != null
-      //     ? Get.offAll(() => const Dashboard())
-      //     : Get.to(() => const WelcomeScreen());
-    } on FirebaseAuthException catch (e) {
-      final exception = SignupExceptions.code(e.code);
-      Get.snackbar(
-        'FIREBASE AUTH EXCEPTION',
-        exception.message,
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
-        colorText: Colors.red,
-        duration: const Duration(seconds: 30),
-      );
-      print('FIREBASE AUTH EXCEPTION - ${exception.message}');
-      throw exception;
-    } catch (_) {
-      const exception = SignupExceptions();
-      Get.snackbar(
-        'EXCEPTION',
-        exception.message,
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
-        colorText: Colors.red,
-      );
-      print('EXCEPTION - ${exception.message}');
-      throw exception;
-    }
+    await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
   }
 
   // -- login with phone number
@@ -207,5 +178,40 @@ class AuthRepo extends GetxController {
     } catch (e) {
       throw 'unable to log out! please try again';
     }
+  }
+
+  // ## FORM VALIDATIONS
+  // -- validate email address
+  String? validateEmail(String? loginEmail) {
+    if (loginEmail == null || loginEmail.isEmpty) {
+      return 'e-mail address is required!';
+    } else if (!loginEmail.isEmail) {
+      return 'invalid e-mail address format';
+    }
+    return null;
+  }
+
+  // -- validate password
+  String? validatePassword(String? formPassword) {
+    String pswdPattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&%~]).{8,}$';
+
+    RegExp reqex = RegExp(pswdPattern);
+
+    if (formPassword == null || formPassword.isEmpty) {
+      return 'password is required!';
+    }
+
+    if (!reqex.hasMatch(formPassword)) {
+      return '''
+        password must be;
+        - at least 8 characters long and,
+        include:
+        - an uppercase letter,
+        - a number, and
+        - a symbol!
+      ''';
+    }
+    return null;
   }
 }

@@ -3,10 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:r_intel/src/constants/colors.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/style/textfield_style.dart';
+import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/features/authentication/controllers/signup_controller.dart';
+import 'package:r_intel/src/repository/auth_repository/auth_repo.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({super.key});
@@ -14,6 +17,8 @@ class SignUpFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignupController());
+
+    final auth = AuthRepo.instance;
 
     FocusNode focusNode = FocusNode();
 
@@ -26,6 +31,28 @@ class SignUpFormWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // -- error message is displayed here
+            Obx(
+              () => Container(
+                padding: controller.errorMsg.value != ''
+                    ? const EdgeInsets.all(rDefaultSize)
+                    : const EdgeInsets.all(0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  color: Colors.redAccent.withOpacity(0.1),
+                ),
+                child: PrimaryText(
+                  text: controller.errorMsg.value,
+                  color: Colors.red,
+                  size: 10.0,
+                ),
+              ),
+            ),
+
+            const SizedBox(
+              height: rFormHeight - 15,
+            ),
+
             RTextfield(
               obscureText: false,
               txtController: controller.fullName,
@@ -39,30 +66,24 @@ class SignUpFormWidget extends StatelessWidget {
             const SizedBox(
               height: rFormHeight - 20,
             ),
-            // TextFormField(
-            //   controller: controller.email,
-            //   readOnly: true,
-            //   decoration: InputDecoration(
-            //       labelText: 'Email',
-            //       labelStyle: textStyle,
-            //       hintStyle: const TextStyle(fontStyle: FontStyle.italic)),
-            //   validator: (value) {
-            //     if (value == null || value.isEmpty) {
-            //       return 'please type in your email address...';
-            //     }
-            //     return null;
-            //   },
-            // ),
-            RTextfield(
+
+            TextFormField(
               obscureText: false,
-              txtController: controller.email,
-              inputDecoration: const InputDecoration(
+              controller: controller.email,
+              validator: auth.validateEmail,
+              style: const TextStyle(
+                fontSize: 10,
+                fontFamily: 'Poppins',
+                height: 0.8,
+              ),
+              decoration: const InputDecoration(
                 label: Text('Email'),
                 prefixIcon: Icon(
                   Icons.email_outlined,
                 ),
               ),
             ),
+
             const SizedBox(
               height: rFormHeight - 20,
             ),
@@ -104,11 +125,17 @@ class SignUpFormWidget extends StatelessWidget {
             const SizedBox(
               height: rFormHeight - 20,
             ),
-            RTextfield(
-              //inkwell for toggle password
+
+            TextFormField(
               obscureText: true,
-              txtController: controller.password,
-              inputDecoration: InputDecoration(
+              controller: controller.password,
+              validator: auth.validatePassword,
+              style: const TextStyle(
+                fontSize: 10,
+                fontFamily: 'Poppins',
+                height: 0.8,
+              ),
+              decoration: InputDecoration(
                 label: const Text('Password'),
                 prefixIcon: const Icon(
                   Icons.fingerprint,
@@ -119,10 +146,9 @@ class SignUpFormWidget extends StatelessWidget {
                     Icons.visibility_off,
                   ),
                 ),
-                alignLabelWithHint: false,
-                filled: true,
               ),
             ),
+
             const SizedBox(
               height: rFormHeight - 20,
             ),
@@ -149,28 +175,36 @@ class SignUpFormWidget extends StatelessWidget {
             ),
 
             Obx(
-              () => ElevatedButton.icon(
-                icon: controller.isLoading.value
-                    ? Container(
-                        width: 24.0,
-                        height: 24.0,
-                        padding: const EdgeInsets.all(2.0),
-                        child: const CircularProgressIndicator(
-                          color: Colors.white,
-                          strokeWidth: 3,
-                        ),
-                      )
-                    : const Icon(Icons.feedback),
-                label: Text(
-                  'Sign up'.toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 11,
-                    fontFamily: 'Poppins',
+              () => SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  icon: controller.isLoading.value
+                      ? Container(
+                          width: 24.0,
+                          height: 24.0,
+                          padding: const EdgeInsets.all(2.0),
+                          child: const CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 3,
+                          ),
+                        )
+                      : const Icon(LineAwesomeIcons.lock_open),
+                  label: Text(
+                    'Sign up'.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 11,
+                      fontFamily: 'Poppins',
+                    ),
                   ),
+                  onPressed: controller.isLoading.value
+                      ? () {}
+                      : () {
+                          if (controller.signUpFormKey.currentState!
+                              .validate()) {
+                            controller.createUser();
+                          }
+                        },
                 ),
-                onPressed: controller.isLoading.value
-                    ? () {}
-                    : () => controller.createUser(),
               ),
             ),
             // SizedBox(

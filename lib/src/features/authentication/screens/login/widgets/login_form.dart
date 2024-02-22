@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:r_intel/src/constants/size.dart';
-import 'package:r_intel/src/constants/style/textfield_style.dart';
+import 'package:r_intel/src/constants/style/txt_style.dart';
 import 'package:r_intel/src/features/authentication/controllers/login_controller.dart';
+import 'package:r_intel/src/repository/auth_repository/auth_repo.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -12,6 +14,7 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginController = Get.put(LoginController());
+    final auth = AuthRepo.instance;
 
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -22,25 +25,59 @@ class LoginForm extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RTextfield(
+            // -- error message is displayed here
+            Obx(
+              () => Container(
+                padding: loginController.errorMsg.value != ''
+                    ? const EdgeInsets.all(rDefaultSize)
+                    : const EdgeInsets.all(0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  color: Colors.redAccent.withOpacity(0.1),
+                ),
+                child: PrimaryText(
+                  text: loginController.errorMsg.value,
+                  color: Colors.red,
+                  size: 10.0,
+                ),
+              ),
+            ),
+
+            const SizedBox(
+              height: rFormHeight - 15,
+            ),
+
+            TextFormField(
               obscureText: false,
-              txtController: loginController.email,
-              inputDecoration: const InputDecoration(
+              controller: loginController.email,
+              validator: auth.validateEmail,
+              style: const TextStyle(
+                fontSize: 10,
+                fontFamily: 'Poppins',
+                height: 0.8,
+              ),
+              decoration: const InputDecoration(
                 label: Text('Email'),
                 prefixIcon: Icon(
                   Icons.email_outlined,
                 ),
               ),
             ),
+
             const SizedBox(
               height: rFormHeight - 20,
             ),
 
-            RTextfield(
-              //inkwell for toggle password
+            TextFormField(
               obscureText: true,
-              txtController: loginController.password,
-              inputDecoration: InputDecoration(
+              controller: loginController.password,
+              validator: auth.validatePassword,
+              style: const TextStyle(
+                fontSize: 10,
+                fontFamily: 'Poppins',
+                height: 0.8,
+              ),
+              decoration: InputDecoration(
                 label: const Text('Password'),
                 prefixIcon: const Icon(
                   Icons.fingerprint,
@@ -51,52 +88,46 @@ class LoginForm extends StatelessWidget {
                     Icons.visibility_off,
                   ),
                 ),
-                alignLabelWithHint: false,
-                filled: true,
               ),
             ),
+
             const SizedBox(
-              height: rFormHeight - 20,
+              height: rFormHeight - 10,
             ),
 
             Obx(
-              () => ElevatedButton.icon(
-                icon: loginController.isLoading.value
-                    ? Container(
-                        width: 24.0,
-                        height: 24.0,
-                        padding: const EdgeInsets.all(2.0),
-                        child: const CircularProgressIndicator(
-                          color: Colors.white,
-                          strokeWidth: 3,
-                        ),
-                      )
-                    : const Icon(Icons.feedback),
-                label: Text(
-                  'Login'.toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 11,
-                    fontFamily: 'Poppins',
+              () => SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  icon: loginController.isLoading.value
+                      ? Container(
+                          width: 24.0,
+                          height: 24.0,
+                          padding: const EdgeInsets.all(2.0),
+                          child: const CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 3,
+                          ),
+                        )
+                      : const Icon(LineAwesomeIcons.alternate_sign_in),
+                  label: Text(
+                    'Login'.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 11,
+                      fontFamily: 'Poppins',
+                    ),
                   ),
+                  onPressed: loginController.isLoading.value
+                      ? () {}
+                      : () {
+                          if (loginController.loginFormKey.currentState!
+                              .validate()) {
+                            loginController.login();
+                          }
+                        },
                 ),
-                onPressed: loginController.isLoading.value
-                    ? () {}
-                    : () => loginController.login(),
               ),
             ),
-            // SizedBox(
-            //   width: double.infinity,
-            //   child: ElevatedButton(
-            //     onPressed: () {},
-            //     child: Text(
-            //       'Sign Up'.toUpperCase(),
-            //       style: const TextStyle(
-            //         fontSize: 10,
-            //         fontFamily: 'Poppins',
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),

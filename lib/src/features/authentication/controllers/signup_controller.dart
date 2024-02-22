@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:r_intel/src/features/authentication/models/user_model.dart';
@@ -9,6 +10,8 @@ class SignupController extends GetxController {
 
   // ignore: non_constant_identifier_names
   RxString cell_no = ''.obs;
+
+  RxString errorMsg = ''.obs;
 
   final userRepo = Get.put(UserRepository());
 
@@ -43,11 +46,6 @@ class SignupController extends GetxController {
     try {
       isLoading.value = true;
 
-      if (!signUpFormKey.currentState!.validate()) {
-        isLoading.value = false;
-        return;
-      }
-
       // -- get User model Object and pass it to SignupController Object
       final user = UserModel(
         fullName: fullName.text.trim(),
@@ -65,16 +63,18 @@ class SignupController extends GetxController {
       await userRepo.createUser(user);
 
       auth.setInitialScreen(auth.firebaseUser);
-    } catch (e) {
+      errorMsg.value = '';
+    } on FirebaseAuthException catch (error) {
       isLoading.value = false;
-      Get.snackbar(
-        'ERROR!!',
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
-        colorText: Colors.red,
-        duration: const Duration(seconds: 15),
-      );
+      errorMsg.value = error.message!;
+      // Get.snackbar(
+      //   'ERROR!!',
+      //   e.toString(),
+      //   snackPosition: SnackPosition.BOTTOM,
+      //   backgroundColor: Colors.redAccent.withOpacity(0.1),
+      //   colorText: Colors.red,
+      //   duration: const Duration(seconds: 15),
+      // );
     }
   }
 }
