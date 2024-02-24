@@ -3,8 +3,8 @@ import 'package:r_intel/src/common_widgets/form/form_header_widget.dart';
 import 'package:r_intel/src/constants/image_strings.dart';
 import 'package:r_intel/src/constants/size.dart';
 import 'package:r_intel/src/constants/text_strings.dart';
-import 'package:r_intel/src/features/authentication/screens/login/widgets/login_footer_widget.dart';
 import 'package:r_intel/src/features/authentication/screens/login/widgets/login_form.dart';
+import 'package:r_intel/src/features/authentication/screens/login/widgets/social_login_btn_footer.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
                   subTitle: rLoginSubTitle,
                 ),
                 LoginForm(),
-                LoginFooterWidget(),
+                SocialLoginFooterWidget(),
               ],
             ),
           ),

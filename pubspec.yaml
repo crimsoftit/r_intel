@@ -51,6 +51,7 @@ dependencies:
   firebase_core: ^2.24.2  
   firebase_auth: ^4.16.0
   cloud_firestore: ^4.14.0
+  google_sign_in: ^6.1.6
 
 
   # -- icon packages
@@ -86,6 +87,10 @@ dependencies:
   # google fonts
   google_fonts: ^6.1.0
   flutter_native_splash: ^2.2.0+1
+
+
+  # google_sign_in
+  
 
   
   

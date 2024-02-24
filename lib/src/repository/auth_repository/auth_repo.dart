@@ -2,9 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:r_intel/src/features/authentication/screens/email_verification/mail_verification.dart';
-import 'package:r_intel/src/features/authentication/screens/login/login_screen.dart';
 import 'package:r_intel/src/features/authentication/screens/onboarding/onboarding_screen.dart';
+import 'package:r_intel/src/features/authentication/screens/welcome_screen/welcome_screen.dart';
 import 'package:r_intel/src/features/core/screens/dashboard/dashboard.dart';
 import 'package:r_intel/src/repository/auth_repository/exceptions/duara_exceptions.dart';
 import 'package:r_intel/src/repository/auth_repository/exceptions/signup_exceptions.dart';
@@ -164,19 +165,30 @@ class AuthRepo extends GetxController {
     return credentials.user != null ? true : false;
   }
 
-  // -- log out user
-  Future<void> logout() async {
+  // -- [GoogleAuthentication] - sign in with google
+  Future<UserCredential> signInWithGoogle() async {
     try {
-      // await GoogleSignIn().logout();
-      // await FacebookAuth.instance.logout();
-      await _auth.signOut();
-      Get.offAll(() => const LoginScreen());
+      // trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      // obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      // create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // once signed in, return the UserCredential Object(class)
+      return await FirebaseAuth.instance.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
-      throw e.message!;
-    } on FormatException catch (e) {
-      throw e.message;
-    } catch (e) {
-      throw 'unable to log out! please try again';
+      final exception = DExceptions.fromCode(e.code);
+      throw exception.message;
+    } catch (_) {
+      const exception = DExceptions();
+      throw exception.message;
     }
   }
 
@@ -213,5 +225,21 @@ class AuthRepo extends GetxController {
       ''';
     }
     return null;
+  }
+
+  // -- log out user
+  Future<void> logout() async {
+    try {
+      await GoogleSignIn().signOut();
+      //await FacebookAuth.instance.logout();
+      await _auth.signOut();
+      Get.offAll(() => const WelcomeScreen());
+    } on FirebaseAuthException catch (e) {
+      throw e.message!;
+    } on FormatException catch (e) {
+      throw e.message;
+    } catch (e) {
+      throw 'unable to log out! please try again';
+    }
   }
 }
